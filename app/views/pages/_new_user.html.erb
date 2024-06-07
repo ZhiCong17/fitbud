@@ -1,4 +1,17 @@
-<div>
-  Hi
-  <%= current_user.username %>
+<div class='row justify-content-center'>
+  <div class='card col-10 py-4 mb-2'>
+    Hi
+    <%= current_user.username %>
+  </div>
+
+  <div class='card col-10 py-5 d-flex align-item-center text-center'>
+    <span>
+      Your workout plan is empty.
+    </span>
+    <span>
+      Let's add a workout plan.
+    </span>
+    <%= link_to 'Add Workout Plan', root_path,
+    class: "btn btn-primary my-3" %>
+  </div>
 </div>
