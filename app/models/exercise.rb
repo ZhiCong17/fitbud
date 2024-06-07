@@ -1,3 +1,3 @@
 class Exercise < ApplicationRecord
-  belongs_to :exercise_plan
+  has_many :exercise_plan
 end

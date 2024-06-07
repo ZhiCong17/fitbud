@@ -8,4 +8,5 @@ class User < ApplicationRecord
   def current_plan
     plans.where("progress<100").first
   end
+
 end
