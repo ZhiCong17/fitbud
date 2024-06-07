@@ -22,7 +22,7 @@ plan1 = Plan.create!(progress: 0, user: tom)
 plan2 = Plan.create!(progress: 0, user: jane)
 
 puts "Creating Exercise"
-exercise1 = Exercise.create!(title: "Bodyweight Squats" , description: "bodyweight squat involves shifting your hips back" , video: "https://www.youtube.com/watch?v=8uoaYwS6iFM" )
+exercise1 = Exercise.create!(title: "Bodyweight Squats" , description: "bodyweight squat involves shifting your hips back" , video: "https://www.youtube.com/watch?v=8uoaYwS6iFM"  )
 exercise2 = Exercise.create!(title: "Push-ups ", description: "bodyweight squat involves shifting your hips back" , video: "https://www.youtube.com/watch?v=8uoaYwS6iFM" )
 exercise3 = Exercise.create!(title: "Dumbbell Lunges", description: "bodyweight squat involves shifting your hips back" , video: "https://www.youtube.com/watch?v=8uoaYwS6iFM" )
 exercise4 = Exercise.create!(title: "Dumbbell Rows", description: "bodyweight squat involves shifting your hips back" , video: "https://www.youtube.com/watch?v=8uoaYwS6iFM" )
