@@ -1,0 +1,23 @@
+<div class='row justify-content-center'>
+  <div class='card col-10 py-4 mb-2'>
+    Hi
+    <%= current_user.username %>
+  </div>
+
+  <div class='card col-10 py-4 mb-2'>
+    <span>Current plan progress</span>
+    <%= current_user.current_plan.progress %>
+  </div>
+
+  <%# plan = current_user.current_plan %>
+  <%# exercise_plans = ExercisePlan.where(plan: plan) %>
+
+  <div class='card col-10 py-4 mb-2'>
+    display all exercises in current excersice plan
+    <ul>
+      <% current_user.current_plan.exercise_plans.each do |exercise_plan| %>
+      <li> <%= exercise_plan.exercise.title %> </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

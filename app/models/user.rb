@@ -12,4 +12,8 @@ class User < ApplicationRecord
   validates :height, :weight, presence: true
   validates :gender, presence: true, inclusion: { in: GENDER }
   validates :fitness_goal, presence: true, inclusion: { in: FITNESS_GOAL }
+
+  def current_plan
+    plans.where("progress<100").first
+  end
 end

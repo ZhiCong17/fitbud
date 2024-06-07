@@ -20,9 +20,13 @@
 
   <div class="mb-5">
     <%# Perform BMI calculation %>
+     <% if @user.height.nil? || @user.weight.nil? %>
+      <% bmi = 20 %>
+      <% else %>
     <% height_in_meters = @user.height / 100.0 %>
     <% bmi = @user.weight / (height_in_meters ** 2) %>
     <p><strong> Your BMI: <%= bmi.round(2) %> </strong></p>
+    <% end %>
 
     <% if bmi < 18.5 %>
       <h2><strong>Status:</strong> Your are Underweight!!!</h2>
