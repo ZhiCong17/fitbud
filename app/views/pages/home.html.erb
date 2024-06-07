@@ -1,33 +1,9 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-
-
-<div class="banner d-flex justify-content-center align-items-end">
-    <%= link_to "Sign Up", root_path, class: "btn btn-primary mb-3" %>
-</div>
-
-
-<div >
-<img src="/app/assets/images/home_banner.png" alt="">
-</div>
-
-<div class='card p-5 mb-3'>
-introduce app and its features
-</div>
-
-<div class='card p-5 mb-3'>
-introduce app and its features
-</div>
-
-<div class='card p-5 mb-3'>
-introduce app and its features
-</div>
-<div class='card p-5 mb-3'>
-introduce app and its features
-</div>
-<div class='card p-5 mb-3'>
-introduce app and its features
-</div>
-<div class='card p-5 mb-3'>
-introduce app and its features
-</div>
+<% if user_signed_in? %>
+  <% if current_user.current_plan.nil? %>
+    <%= render 'pages/new_user' %>
+  <% else %>
+    <%= render 'pages/user_progress' %>
+  <% end %>
+<% else %>
+  <%= render 'pages/visitor' %>
+<% end %>
