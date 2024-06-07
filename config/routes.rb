@@ -13,4 +13,8 @@ Rails.application.routes.draw do
   resources :plans do
     resources :exercise_plans, only: %i[show]
   end
+
+  resources :exercise_plans do
+    resources :trackers, only: %i[create]
+  end
 end

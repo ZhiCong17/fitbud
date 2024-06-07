@@ -1,0 +1,5 @@
+<%= simple_form_for [exercise_plan, tracker], html: { class: "d-flex align-items-center" } do |f| %>
+      <%= f.input :weight, label: false, input_html: { placeholder: "KG"} %>
+      <%= f.input :repetitions, label: false, input_html: { class: "mx-4", placeholder: "Reps"} %>
+      <%= f.submit "+", class: "btn btn-primary mb-3" %>
+ <% end %>
