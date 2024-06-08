@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def profile
     @user = current_user
-    @bmi = @user.bmi(current_user)
+    @bmi = @user.bmi(current_user) if @user.weight.present? && @user.height.present?
   end
 
   def update

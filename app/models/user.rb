@@ -8,16 +8,16 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :age, presence: true, numericality: { in: 0..99, message: 'must be in 0 to 99' }
-  validates :height, :weight, presence: true
-  validates :gender, presence: true, inclusion: { in: GENDER }
-  validates :fitness_goal, presence: true, inclusion: { in: FITNESS_GOAL }
+  # validates :age, presence: false, numericality: { in: 0..99, message: 'must be in 0 to 99' }
+  # validates :height, :weight,presence: true
+  # validates :gender, presence: true, inclusion: { in: GENDER }
+  # validates :fitness_goal, presence: true, inclusion: { in: FITNESS_GOAL }
 
   def current_plan
     plans.where("progress<100").first
   end
 
   def bmi(user)
-    @bmi = user.weight / ((user.height/100.0)**2)
+    @bmi = user.weight / ((user.height / 100.0)**2)
   end
 end
