@@ -16,4 +16,8 @@ class User < ApplicationRecord
   def current_plan
     plans.where("progress<100").first
   end
+
+  def bmi(user)
+    @bmi = user.weight / ((user.height/100.0)**2)
+  end
 end

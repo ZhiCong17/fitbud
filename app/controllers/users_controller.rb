@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def profile
     @user = current_user
+    @bmi = @user.bmi(current_user)
   end
 
   def update
