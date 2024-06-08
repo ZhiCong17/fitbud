@@ -1,4 +1,5 @@
 class ExercisePlan < ApplicationRecord
   belongs_to :plan
   belongs_to :exercise
+  has_many :trackers
 end

@@ -12,7 +12,7 @@
       <p class="text-center mb-0">Rest</p>
     </div>
     <div>
-      <p class="border border-dark circle-small mb-2">1/<%= @exercise_plan.set %></p>
+      <p class="border border-dark circle-small mb-2"><%= @exercise_plan.trackers.count %>/<%= @exercise_plan.set %></p>
       <p class="text-center mb-0">Sets</p>
     </div>
   </div>
