@@ -1,0 +1,31 @@
+<div class="container">
+  <h1 class="mt-5"><%= @exercise_plan.exercise.title %></h1>
+  <p>Recommended weight: 2-5kg</p>
+
+  <div class="d-flex justify-content-between g-4 align-items-center m-4">
+    <div>
+      <p class="border border-dark circle-small mb-2"><%= @exercise_plan.repetitions %></p>
+      <p class="text-center mb-0">Reps</p>
+    </div>
+    <div>
+      <p class="border border-dark circle-large mb-2">2:00</p>
+      <p class="text-center mb-0">Rest</p>
+    </div>
+    <div>
+      <p class="border border-dark circle-small mb-2">1/<%= @exercise_plan.set %></p>
+      <p class="text-center mb-0">Sets</p>
+    </div>
+  </div>
+  <p class="mb-2">Enter your set details: </p>
+  <%= render "tracker", exercise_plan: @exercise_plan, tracker: @tracker %>
+  <div class="video-container mb-3 rounded">
+    <iframe class="video" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=V0zo0dR5x2hAXNTJ&amp;controls=0"
+    title="YouTube video player" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+    </iframe>
+  </div>
+  <div class="bg-secondary" style="height:240px;">
+    <p class="text-center">
+      Exercise description
+    </p>
+  </div>
+</div>
