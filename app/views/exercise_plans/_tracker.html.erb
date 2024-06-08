@@ -1,5 +1,5 @@
-<%= simple_form_for [exercise_plan, tracker], html: { class: "d-flex align-items-center" } do |f| %>
-      <%= f.input :weight, label: false, input_html: { placeholder: "KG"} %>
-      <%= f.input :repetitions, label: false, input_html: { class: "mx-4", placeholder: "Reps"} %>
+<%= simple_form_for [exercise_plan, tracker], html: { class: "d-flex align-items-center gap-2" } do |f| %>
+      <%= f.input :weight, label: false, input_html: { class:"text-center", placeholder: "KG"} %>
+      <%= f.input :repetitions, label: false, input_html: { class: "text-center d-inline", placeholder: "Reps"} %>
       <%= f.submit "+", class: "btn btn-primary mb-3" %>
  <% end %>
