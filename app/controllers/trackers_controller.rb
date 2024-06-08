@@ -7,7 +7,7 @@ class TrackersController < ApplicationController
     if @tracker.save
       redirect_to plan_exercise_plan_path(exercise_plan.plan, exercise_plan)
     else
-      render :new, status: :unprocessable_entity
+      redirect_to plan_exercise_plan_path(exercise_plan.plan, exercise_plan), alert: "Inputs cannot be empty"
     end
   end
 
