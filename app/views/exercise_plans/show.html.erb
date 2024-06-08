@@ -18,9 +18,11 @@
   </div>
   <p class="mb-2">Enter your set details: </p>
   <%= render "tracker", exercise_plan: @exercise_plan, tracker: @tracker %>
-  <iframe width="100%" height="240px" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=V0zo0dR5x2hAXNTJ&amp;controls=0"
-  title="YouTube video player" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-  </iframe>
+  <div class="video-container mb-3 rounded">
+    <iframe class="video" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=V0zo0dR5x2hAXNTJ&amp;controls=0"
+    title="YouTube video player" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+    </iframe>
+  </div>
   <div class="bg-secondary" style="height:240px;">
     <p class="text-center">
       Exercise description
