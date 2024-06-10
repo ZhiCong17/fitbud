@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_10_053326) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_10_093756) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,6 +26,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_10_053326) do
     t.string "status"
     t.integer "order"
     t.string "description"
+    t.float "rest"
+    t.float "weight"
     t.index ["exercise_id"], name: "index_exercise_plans_on_exercise_id"
     t.index ["plan_id"], name: "index_exercise_plans_on_plan_id"
   end
