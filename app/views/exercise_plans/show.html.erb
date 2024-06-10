@@ -17,7 +17,7 @@
     </div>
   </div>
   <p class="mb-2">Enter your set details: </p>
-  <%= render "tracker", exercise_plan: @exercise_plan, tracker: @tracker, disabled_tracker: @disabled_tracker %>
+  <%= render "exercise_plans/tracker", exercise_plan: @exercise_plan, tracker: @tracker, disabled_tracker: @disabled_tracker %>
   <% @exercise_plan.trackers.each_with_index do |tracker, index| %>
     <p>Set <%= index + 1 %>: <%= tracker.repetitions %> reps, <%= tracker.weight %> kg</p>
   <% end %>
