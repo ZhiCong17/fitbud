@@ -5,16 +5,19 @@
         <div class="collape">
           <h2 class="accordion-header py-2">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= index %>" aria-expanded="true" aria-controls="collapse<%= index %>">
+              <div class= "text-white">
               <h2>
-                <strong class="text-white">Day: <%= suggested_day %> </strong>
+                <strong>Day: <%= suggested_day %> </strong>
               </h2>
+              <p> <strong>Description: <%= exercise_plans_by_day.first.description %> </strong></p>
+              </div>
             </button>
           </h2>
           <div id="collapse<%= index %>" class="accordion-collapse collapse<%= index == 0 ? ' show' : '' %>" aria-labelledby="heading<%= index %>" data-bs-parent="#accordionExample">
-            <% exercise_plans_by_day.each_with_index do |exercise_plan, exercise_index| %>
+            <% exercise_plans_by_day.each do |exercise_plan| %>
               <%= link_to(plan_exercise_plan_path(exercise_plan.plan, exercise_plan), {class: "text-decoration-none text-black"}) do %>
               <div class="accordion-body border rounded-3">
-                <strong>Exercise:<%= exercise_index + 1%> <%= exercise_plan.exercise.title %></strong>
+                <strong>Exercise<%= exercise_plan.order%>: <%= exercise_plan.exercise.title %></strong>
               </div>
               <% end %>
             <% end %>
