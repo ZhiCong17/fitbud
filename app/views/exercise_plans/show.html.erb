@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" data-controller="countdown">
   <h1 class="mt-5"><%= @exercise_plan.exercise.title %></h1>
   <p>Recommended weight: 2-5kg</p>
 
@@ -8,16 +8,19 @@
       <p class="text-center mb-0">Reps</p>
     </div>
     <div>
-      <p class="border border-dark circle-large mb-2">2:00</p>
+      <p class="border border-dark circle-large mb-2" data-countdown-target="div">2:00</p>
       <p class="text-center mb-0">Rest</p>
     </div>
     <div>
-      <p class="border border-dark circle-small mb-2">1/<%= @exercise_plan.set %></p>
+      <p class="border border-dark circle-small mb-2"><%= @exercise_plan.trackers.count %>/<%= @exercise_plan.set %></p>
       <p class="text-center mb-0">Sets</p>
     </div>
   </div>
   <p class="mb-2">Enter your set details: </p>
-  <%= render "tracker", exercise_plan: @exercise_plan, tracker: @tracker %>
+  <%= render "tracker", exercise_plan: @exercise_plan, tracker: @tracker, disabled_tracker: @disabled_tracker %>
+  <% @exercise_plan.trackers.each_with_index do |tracker, index| %>
+    <p>Set <%= index + 1 %>: <%= tracker.repetitions %> reps, <%= tracker.weight %> kg</p>
+  <% end %>
   <div class="video-container mb-3 rounded">
     <iframe class="video" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=V0zo0dR5x2hAXNTJ&amp;controls=0"
     title="YouTube video player" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>

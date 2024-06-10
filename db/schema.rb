@@ -51,8 +51,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_10_093756) do
   end
 
   create_table "trackers", force: :cascade do |t|
-    t.integer "repetitions"
-    t.integer "weight"
+    t.integer "repetitions", null: false
+    t.float "weight", null: false
     t.bigint "exercise_plan_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
