@@ -1,16 +1,34 @@
 import { Controller } from "@hotwired/stimulus"
+import { Timer } from "easytimer.js";
 
 // Connects to data-controller="countdown"
 export default class extends Controller {
-  static targets = ["div"]
+  static targets = ["time"]
+
+  timer = new Timer({startValues: { minutes: 1, seconds: 30 }});
 
   connect() {
-    console.log("countdown connected");
+     this.timeTarget.innerText = this.timer.getTimeValues().toString();
+  }
 
-    const timer = new EasyTimer();
-    timer.start({ countdown: true, startValues: { seconds: 30 } });
+  startTimer() {
+    this.timer.start({ countdown: true, startValues: { minutes: 1, seconds: 30 } });
 
-    divTarget.innerText = timer.getTimeValues().toString();
+    this.updateTimerDisplay();
+  }
+
+  updateTimerDisplay() {
+    // let timerDisplay = this.timeTarget.innerText
+
+    // if (timerDisplay) {
+    //   timerDisplay = this.timer.getTimeValues().toString();
+    // }
+
+    fetch(this.timer.getTimeValues())
+      .then(response => {console.log(response);})
+      .then((data) => {
+        console.log(data);
+      })
   }
 
   // countdown() {
