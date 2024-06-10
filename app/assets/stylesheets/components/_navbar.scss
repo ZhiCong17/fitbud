@@ -1,7 +1,7 @@
 .navbar-lewagon {
-  justify-content: space-between;
+  // justify-content: space-between;
   background: white;
-  position: fixed;
+  // position: fixed;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -19,4 +19,10 @@
 .dropdown-menu[data-bs-popper]{
   right: 0;
   left: unset;
+}
+
+
+.navbar-user {
+  background: #45A29E;
+  height: 64px;
 }
