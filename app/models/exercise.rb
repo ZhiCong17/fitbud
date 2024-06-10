@@ -1,3 +1,3 @@
 class Exercise < ApplicationRecord
-  has_many :exercise_plan
+  has_many :exercise_plans
 end
