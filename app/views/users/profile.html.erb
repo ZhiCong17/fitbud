@@ -1,6 +1,8 @@
 <div class="container">
   <%# <button type="button" class="btn btn-primary d-grid col-6 mx-auto mt-5">+ Add Workout Plan</button> %>
-  <%= link_to "+ Add Workout Plan", new_plan_path, class: "btn btn-primary d-grid col-6 mx-auto mt-5" %>
+  <%# <%= link_to "+ Add Workout Plan", create_plan_path, class: "btn btn-primary d-grid col-6 mx-auto mt-5" %>
+  <%= link_to "+ Add Workout Plan", create_plan_path, data:{ turbo_method: :post}, class: "btn btn-primary d-grid col-6 mx-auto mt-5" %>
+
   <div class="card-wrapper text-center p-5">
     <h3>Personalise fitness and health</h3>
     <p>This information ensures fitness data are as accurate as possible.</p>
