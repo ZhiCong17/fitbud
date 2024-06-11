@@ -25,4 +25,26 @@
 .navbar-user {
   background: #45A29E;
   height: 64px;
+  // position: absolute;
+}
+
+.log-out-home {
+  background: #66FCF1;
+  bottom: 0px;
+  right: 0px;
+  padding: 4px 16px;
+  // margin: 2px 0;
+  transition: 0.3s;
+  // transform: translateY(0);
+  transform: translate(100%, -200%);
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.log-out-home.show {
+  transform: translate(-5%, -200%);
+  // transform: translate(100%, -200%);
+
 }

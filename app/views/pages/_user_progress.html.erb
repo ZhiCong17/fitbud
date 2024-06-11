@@ -5,19 +5,29 @@
   </div>
 
   <div class='card col-10 py-4 mb-2'>
-    <span>Current plan progress</span>
-    <%= current_user.current_plan.progress %>
+    <%#= link_to(plan_path(current_user.current_plan),{class: 'text-decoration-none'}) do  %>
+
+    <%= link_to(plan_path(current_user.current_plan),{class: 'text-decoration-none'}) do  %>
+      <span>Current plan progress</span>
+      <%= current_user.current_plan.progress %>
+    <% end %>
   </div>
 
   <%# plan = current_user.current_plan %>
   <%# exercise_plans = ExercisePlan.where(plan: plan) %>
 
   <div class='card col-10 py-4 mb-2'>
-    display all exercises in current excersice plan
-    <ul>
+    <span class='mb-2'>
+      display all exercises in current excersice plan
+    </span>
+    <%# <ul> %>
       <% current_user.current_plan.exercise_plans.each do |exercise_plan| %>
-      <li> <%= exercise_plan.exercise.title %> </li>
+      <%# <li> <%= exercise_plan.exercise.title %> <%# </li> %>
+      <div class="card p-2 mb-2">
+        <%= exercise_plan.exercise.title %>
+      </div>
+
       <% end %>
-    </ul>
+    <%# </ul> %>
   </div>
 </div>
