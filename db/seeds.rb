@@ -30,12 +30,12 @@ exercise5 = Exercise.create!(title: "Plank", description: "bodyweight squat invo
 exercise6 = Exercise.create!(title: "Cool down", description: "bodyweight squat involves shifting your hips back" , video: "https://www.youtube.com/watch?v=8uoaYwS6iFM" )
 
 puts "Creating Exercise Plan..."
-exercise_plan1 = ExercisePlan.create!(set: 3, repetitions: 20, suggested_day: 1, duration: 20, exercise: exercise1, plan: plan1)
-exercise_plan2 = ExercisePlan.create!(set: 4, repetitions: 10, suggested_day: 1, duration: 20, exercise: exercise2, plan: plan1)
-exercise_plan3 = ExercisePlan.create!(set: 2, repetitions: 10, suggested_day: 2, duration: 20, exercise: exercise3, plan: plan1)
-exercise_plan4 = ExercisePlan.create!(set: 3, repetitions: 20, suggested_day: 1, duration: 20, exercise: exercise4, plan: plan2)
-exercise_plan5 = ExercisePlan.create!(set: 2, repetitions: 10, suggested_day: 1, duration: 20, exercise: exercise5, plan: plan2)
-exercise_plan6 = ExercisePlan.create!(set: 3, repetitions: 20, suggested_day: 2, duration: 20, exercise: exercise6, plan: plan2)
+exercise_plan1 = ExercisePlan.create!(set: 3, repetitions: 20, suggested_day: 1, duration: 20, exercise: exercise1, plan: plan1, status: "Incomplete", order: 1, description: "Upper body"  )
+exercise_plan2 = ExercisePlan.create!(set: 4, repetitions: 10, suggested_day: 1, duration: 20, exercise: exercise2, plan: plan1, status: "Incomplete", order: 2, description: "Upper body")
+exercise_plan3 = ExercisePlan.create!(set: 2, repetitions: 10, suggested_day: 2, duration: 20, exercise: exercise3, plan: plan1, status: "Incomplete", order: 1, description: "Lower body")
+exercise_plan4 = ExercisePlan.create!(set: 3, repetitions: 20, suggested_day: 1, duration: 20, exercise: exercise4, plan: plan2, status: "Incomplete", order: 1, description: "Upper body")
+exercise_plan5 = ExercisePlan.create!(set: 2, repetitions: 10, suggested_day: 1, duration: 20, exercise: exercise5, plan: plan2, status: "Incomplete", order: 2, description: "Upper body")
+exercise_plan6 = ExercisePlan.create!(set: 3, repetitions: 20, suggested_day: 2, duration: 20, exercise: exercise6, plan: plan2, status: "Incomplete", order: 1, description: "Lower body")
 
 
 # puts "Creating Tracker"

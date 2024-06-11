@@ -2,5 +2,5 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "@popperjs/core"
+// import "easytimer"
 import "bootstrap"
-import "easytimer"
