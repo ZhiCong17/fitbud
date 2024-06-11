@@ -21,6 +21,7 @@
           <%# Perform BMI calculation %>
           <% if @user.height.nil? || @user.weight.nil? %>
             <h2>Please update your profile</h2>
+            <%= f.submit"Update profile", class: "btn btn-primary col-12 mt-3" %>
           <% else %>
             <p style="font-size: 24px;"><strong> Your BMI: <%= @bmi.round(2) %> </strong></p>
             <p>18.8 &lt; Healthy Range &lt; 24.9 </p>
