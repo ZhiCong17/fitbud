@@ -1,0 +1,17 @@
+<h1 class="mt-5"><%= exercise_plan.exercise.title %></h1>
+<p>Recommended weight: <%= exercise_plan.weight %>kg</p>
+
+<div class="d-flex justify-content-between g-4 align-items-center m-4">
+  <div>
+    <p class="border border-dark circle-small mb-2"><%= exercise_plan.repetitions %></p>
+    <p class="text-center mb-0">Reps</p>
+  </div>
+  <div>
+    <p class="border border-dark circle-large mb-2" data-countdown-target="time">2:00</p>
+    <p class="text-center mb-0">Rest</p>
+  </div>
+  <div>
+    <p class="border border-dark circle-small mb-2"><%= exercise_plan.trackers.count %>/<%= exercise_plan.set %></p>
+    <p class="text-center mb-0">Sets</p>
+  </div>
+</div>

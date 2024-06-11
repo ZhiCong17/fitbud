@@ -23,9 +23,10 @@ export default class extends Controller {
     // if (timerDisplay) {
     //   timerDisplay = this.timer.getTimeValues().toString();
     // }
+    // console.log(this.timer.getTimeValues());
 
     fetch(this.timer.getTimeValues())
-      .then(response => {console.log(response);})
+      .then(response => console.log(response.json()))
       .then((data) => {
         console.log(data);
       })
