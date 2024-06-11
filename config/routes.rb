@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-
+  post 'plans', to: 'plans#create', as: :create_plan
   resources :plans do
     resources :exercise_plans, only: %i[show]
   end
