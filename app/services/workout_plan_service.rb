@@ -1,7 +1,10 @@
 class WorkoutPlanService
   def self.create_plan(user_id, workout_plan)
     user = User.find(user_id)
-    plan = Plan.create(user: user)
+    plan = Plan.create(
+                      user: user,
+                      progress: 0
+                      )
     rest_day = Exercise.find_by(description: "Rest day")
 
     workout_plan.each do |days, details|
