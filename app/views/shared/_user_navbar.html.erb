@@ -2,7 +2,7 @@
 
   <div class="navbar-user d-flex justify-content-evenly align-items-center py-2">
     <div>
-      <%= link_to raw('<i class="fa-solid fa-house fa-2xl"></i>'), root_path %>
+      <%= link_to raw('<i class="fa-solid fa-house fa-2xl"></i>'), root_path, class: "text-decoration-none text-reset" %>
     </div>
 
     <div>
@@ -10,7 +10,7 @@
     </div>
 
     <div>
-      <%= link_to raw('<i class="fa-solid fa-user fa-2xl"></i>'), profile_path %>
+      <%= link_to raw('<i class="fa-solid fa-user fa-2xl"></i>'), profile_path, class: "text-decoration-none text-reset" %>
     </div>
 
     <div data-action="click->sub-menu-toggle#display">
