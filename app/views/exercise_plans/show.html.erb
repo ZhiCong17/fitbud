@@ -1,16 +1,18 @@
-<div class="container" data-controller="countdown">
+<div class="container" data-controller="workout">
 
-
-  <%= render "exercise_plans/exercise", exercise_plan: @exercise_plan %>
+  <div data-workout-target="exercise">
+    <%= render "exercise_plans/exercise", exercise_plan: @exercise_plan %>
+  </div>
 
 
   <p class="mb-2">Enter your set details: </p>
-  <%= render "exercise_plans/tracker", exercise_plan: @exercise_plan, tracker: @tracker, disabled_tracker: @disabled_tracker %>
+  <%= render "exercise_plans/form", exercise_plan: @exercise_plan, tracker: @tracker, disabled_tracker: @disabled_tracker %>
 
-
-  <% @exercise_plan.trackers.each_with_index do |tracker, index| %>
-    <%= render "exercise_plans/set", tracker: tracker, index: index %>
-  <% end %>
+  <div data-workout-target="tracker ">
+    <% @exercise_plan.trackers.each_with_index do |tracker, index| %>
+      <%= render "exercise_plans/tracker", tracker: tracker, index: index %>
+    <% end %>
+  </div>
 
 
   <div class="video-container mb-3 rounded">

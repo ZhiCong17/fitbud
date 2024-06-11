@@ -3,21 +3,27 @@ import { Timer } from "easytimer.js";
 
 // Connects to data-controller="countdown"
 export default class extends Controller {
-  static targets = ["time"]
+  static targets = ["exercise", "tracker"]
 
-  timer = new Timer({startValues: { minutes: 1, seconds: 30 }});
+  // timer = new Timer({startValues: { minutes: 1, seconds: 30 }});
 
   connect() {
-     this.timeTarget.innerText = this.timer.getTimeValues().toString();
+    //  this.timeTarget.innerText = this.timer.getTimeValues().toString();
+    console.log(this.exerciseTarget);
+    console.log(this.trackerTarget);
   }
 
-  startTimer() {
-    this.timer.start({ countdown: true, startValues: { minutes: 1, seconds: 30 } });
-
-    this.updateTimerDisplay();
+  dosomething() {
+    console.log("test");
   }
+}
+  // startTimer() {
+  //   this.timer.start({ countdown: true, startValues: { minutes: 1, seconds: 30 } });
 
-  updateTimerDisplay() {
+  //   this.updateTimerDisplay();
+  // }
+
+  // updateTimerDisplay() {
     // let timerDisplay = this.timeTarget.innerText
 
     // if (timerDisplay) {
@@ -25,12 +31,11 @@ export default class extends Controller {
     // }
     // console.log(this.timer.getTimeValues());
 
-    fetch(this.timer.getTimeValues())
-      .then(response => console.log(response.json()))
-      .then((data) => {
-        console.log(data);
-      })
-  }
+    // fetch(this.timer.getTimeValues())
+    //   .then(response => console.log(response.json()))
+    //   .then((data) => {
+    //     console.log(data);
+    //   })
 
   // countdown() {
   //   timer.start({countdown: true, startValues: {seconds: 30}});
@@ -45,4 +50,3 @@ export default class extends Controller {
   //       $('#countdownExample .values').html('KABOOM!!');
   //   });
   // }
-}
