@@ -1,19 +1,27 @@
-<div class="container-fluid">
-  <div class="navbar-user d-flex justify-content-evenly align-items-center fixed-bottom py-2">
-    <div class="navbar_icon">
+<div class="fixed-bottom" data-controller="sub-menu-toggle">
+
+  <div class="navbar-user d-flex justify-content-evenly align-items-center py-2">
+    <div>
       <%= link_to raw('<i class="fa-solid fa-house fa-2xl"></i>'), root_path %>
     </div>
 
-    <div class="navbar_icon">
+    <div>
       <i class="fa-solid fa-comment fa-2xl"></i>
     </div>
 
-    <div class="navbar_icon">
+    <div>
       <%= link_to raw('<i class="fa-solid fa-user fa-2xl"></i>'), profile_path %>
     </div>
 
-    <div class="navbar_icon">
+    <div data-action="click->sub-menu-toggle#display">
+    <%# <button > %>
       <i class="fa-solid fa-bars fa-2xl"></i>
+    <%# </button> %>
     </div>
   </div>
+
+  <div class="log-out-home card rounded position-absolute" data-sub-menu-toggle-target="subMenu">
+    <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete} %>
+  </div>
+
 </div>
