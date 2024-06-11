@@ -8,10 +8,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # validates :age, presence: false, numericality: { in: 0..99, message: 'must be in 0 to 99' }
-  # validates :height, :weight,presence: true
-  # validates :gender, presence: true, inclusion: { in: GENDER }
-  # validates :fitness_goal, presence: true, inclusion: { in: FITNESS_GOAL }
+  validates :age, presence: true, numericality: { in: 0..99, message: 'must be in 0 to 99' }, if: :persisted?
+  validates :height, :weight, presence: true, if: :persisted?
+  validates :gender, presence: true, inclusion: { in: GENDER }, if: :persisted?
+  validates :fitness_goal, presence: true, inclusion: { in: FITNESS_GOAL }, if: :persisted?
 
   def current_plan
     plans.where("progress<100").first

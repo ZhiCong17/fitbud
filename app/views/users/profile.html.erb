@@ -1,40 +1,43 @@
 <div class="container">
   <button type="button" class="btn btn-primary d-grid col-6 mx-auto mt-5">+ Add Workout Plan</button>
-  <div class="card-wrapper text-center p-5">
+  <%# <%= link_to "+ Add Workout Plan", create_plan_path, class: "btn btn-primary d-grid col-6 mx-auto mt-5" %>
+
+  <div class="card-wrapper text-center border border-black p-5 m-3">
     <h3>Personalise fitness and health</h3>
     <p>This information ensures fitness data are as accurate as possible.</p>
     <p>These data will not shared with US</p>
   </div>
 
-  <%= simple_form_for(@user) do |f| %>
+  <%# simple_form_for(@user, html: { class: "d-flex row" }) do |f| %>
+  <div class="card-wrapper pt-4 pe-auto">
+    <%= simple_form_for(@user) do |f| %>
       <%# <%= f.input :age, :collection => User::AGE %>
-      <%= f.input :age, input_html: { min: '0', max: '99'} %>
-      <%= f.input :gender, :collection => User::GENDER %>
-      <%= f.input :fitness_goal, :collection => User::FITNESS_GOAL %>
-      <%= f.input :height %>
-      <%= f.input :weight %>
-      <%= f.submit %>
+      <%= f.input :age, input_html: { min: '0', max: '99'}, wrapper_html: { class: "d-flex" }, label_html: {class:"col-3"}, input_html: {class:"g-col-6"} %>
+      <%= f.input :gender, :collection => User::GENDER, wrapper_html: { class: "d-flex" }, label_html: {class:"col-3"}, input_html: {class:"g-col-6"} %>
+      <%= f.input :fitness_goal, :collection => User::FITNESS_GOAL, wrapper_html: { class: "d-flex" }, label_html: {class:"col-3"}, input_html: {class:"g-col-6"} %>
+      <%= f.input :height, wrapper_html: { class: "d-flex" }, label_html: {class:"col-3"}, input_html: {class:"g-col-6"} %>
+      <%= f.input :weight, wrapper_html: { class: "d-flex" }, label_html: {class:"col-3"}, input_html: {class:"g-col-6"} %>
+        <div class="mb-5">
+          <%# Perform BMI calculation %>
+          <% if @user.height.nil? || @user.weight.nil? %>
+            <h2>Please update your profile</h2>
+          <% else %>
+            <p style="font-size: 24px;"><strong> Your BMI: <%= @bmi.round(2) %> </strong></p>
+            <p>18.8 &lt; Healthy Range &lt; 24.9 </p>
+      <%= f.submit"Update profile", class: "btn btn-primary col-12 " %>
       <% end %>
-
-  <br>
-
-  <div class="mb-5">
-    <%# Perform BMI calculation %>
-     <% if @user.height.nil? || @user.weight.nil? %>
-      <h2>Please update your profile</h2>
-    <% else %>
-      <p><strong> Your BMI: <%= @bmi.round(2) %> </strong></p>
-
-
-    <% if @bmi < 18.5 %>
-      <h2><strong>Status:</strong> Your are Underweight!!!</h2>
-    <% elsif @bmi >= 18.5 && @bmi < 24.9 %>
-      <h2><strong>Status:</strong> Congraz!! Your are Normal weight</h2>
-    <% elsif @bmi >= 25 && @bmi < 29.9 %>
-      <h2><strong>Status:</strong> Your are Overweight!</h2>
-    <% else %>
-     <h2><strong>Status:</strong> Your are Obese!! Please do exercise!!!</h2>
     <% end %>
-    <% end %>
+
+  </div>
+
+    <%# if @bmi < 18.5 %>
+      <%# <h2><strong>Status:</strong> Your are Underweight!!!</h2> %>
+    <%# elsif @bmi >= 18.5 && @bmi < 24.9 %>
+      <%# <h2><strong>Status:</strong> Congraz!! Your are Normal weight</h2> %>
+    <%# elsif @bmi >= 25 && @bmi < 29.9 %>
+      <%# <h2><strong>Status:</strong> Your are Overweight!</h2> %>
+    <%# else %>
+     <%# <h2><strong>Status:</strong> Your are Obese!! Please do exercise!!!</h2> %>
+    <%# end %>
   </div>
 </div>
