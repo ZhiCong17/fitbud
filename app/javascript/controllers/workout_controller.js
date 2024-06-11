@@ -3,18 +3,32 @@ import { Timer } from "easytimer.js";
 
 // Connects to data-controller="countdown"
 export default class extends Controller {
-  static targets = ["exercise", "tracker"]
+  static targets = ["exercise", "tracker", "form"]
 
   // timer = new Timer({startValues: { minutes: 1, seconds: 30 }});
 
   connect() {
     //  this.timeTarget.innerText = this.timer.getTimeValues().toString();
-    console.log(this.exerciseTarget);
-    console.log(this.trackerTarget);
   }
 
-  dosomething() {
-    console.log("test");
+  updateSet(event) {
+    event.preventDefault();
+    const url = event.currentTarget.action
+
+    fetch(url, {
+      method: "POST",
+      headers: { "Accept": "application/json" },
+      body: new FormData(event.currentTarget)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+
+      if (data.success) { }
+      else {
+        this.formTarget.outerHTML = data.form
+      }
+    })
   }
 }
   // startTimer() {
