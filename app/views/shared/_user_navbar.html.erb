@@ -6,7 +6,7 @@
     </div>
 
     <div>
-      <i class="fa-solid fa-comment fa-2xl"></i>
+      <%= link_to raw('<i class="fa-solid fa-comment fa-2xl"></i>'), chats_path, class: "text-decoration-none text-reset"%>
     </div>
 
     <div>
@@ -22,6 +22,7 @@
 
   <div class="log-out-home card rounded position-absolute" data-sub-menu-toggle-target="subMenu">
     <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete} %>
+    <%= link_to "History", plans_history_path  %>
   </div>
 
 </div>

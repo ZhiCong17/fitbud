@@ -15,4 +15,11 @@ class PlansController < ApplicationController
       redirect_to plan_path(plan), alert: "New Workout plan created"
     end
   end
+
+  def plans_history
+    @user = current_user
+    @completed_plans = Plan.where(user_id: @user.id, progress: 100).order(created_at: :desc)
+    # @completed_plans.each do |plan|
+    #   @exercise_plan = plan
+  end
 end
