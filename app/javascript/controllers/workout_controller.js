@@ -11,6 +11,31 @@ export default class extends Controller {
     //  this.timeTarget.innerText = this.timer.getTimeValues().toString();
   }
 
+  continueExercise(data) {
+    console.log('continuing...');
+    this.formTarget.outerHTML = data.tracker_form
+    this.exerciseTarget.innerHTML = data.inserted_item_exercise
+    this.trackerTarget.insertAdjacentHTML("beforeend", data.inserted_item_tracker)
+  }
+
+  nextExercise(data) {
+    console.log('nextExercise');
+    window.location.href = data.next_exercise
+  }
+
+  formError(data) {
+    console.log('error....');
+    this.formTarget.outerHTML = data.tracker_form
+  }
+
+  workoutComplete(data) {
+    console.log('Done!');
+    this.formTarget.outerHTML = data.tracker_form
+    this.exerciseTarget.innerHTML = data.inserted_item_exercise
+    this.trackerTarget.insertAdjacentHTML("beforeend", data.inserted_item_tracker)
+    this.trackerTarget.insertAdjacentHTML("afterbegin", data.completion_message)
+  }
+
   updateSet(event) {
     event.preventDefault();
     const url = event.currentTarget.action
@@ -21,18 +46,7 @@ export default class extends Controller {
       body: new FormData(event.currentTarget)
     })
     .then(response => response.json())
-    .then(data => {
-
-      if (data.success) {
-        console.log(data);
-        this.formTarget.outerHTML = data.form
-        this.trackerTarget.insertAdjacentHTML("beforeend", data.inserted_item_tracker)
-        this.exerciseTarget.innerHTML = data.inserted_item_exercise
-      }
-      else {
-        this.formTarget.outerHTML = data.form
-      }
-    })
+    .then(data => this[data.status](data))
   }
 }
   // startTimer() {
