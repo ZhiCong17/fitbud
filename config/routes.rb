@@ -25,5 +25,12 @@ Rails.application.routes.draw do
     resources :trackers, only: %i[create]
   end
 
+  resources :chats, only: %i[index] do
+    collection do
+      post :message
+    end
+  end
+
+  # resources :chat_responses, only: %i[show]
   get 'plans_history', to: 'plans#plans_history'
 end

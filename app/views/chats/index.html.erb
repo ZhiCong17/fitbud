@@ -1,0 +1,15 @@
+<h1>
+  fitbud bot chat
+</h1>
+<div data-controller="bot-message">
+  <div class='card' data-bot-message-target="answer">
+  </div>
+
+  <div>
+    <%= form_with url: message_chats_path, method: :post, class: "d-flex", data: { action: "submit->bot-message#genResponse" } do |form| %>
+    <%#= form_with class: "d-flex", data: {action: "bot_message#genResponse"} do |form| %>
+      <%= form.text_field :message, placeholder: "Type a message", class: "form-control", data: { bot_message_target: "prompt"} %>
+      <%= form.submit "Send", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
