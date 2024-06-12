@@ -9,9 +9,11 @@
   <% else %>
     <% @completed_plans.each do |plan| %>
       <a href="<%= plan_path(plan) %>" class="text-decoration-none text-white">
-      <div class="card-plan text-center border border-dark p-4 m-2" style="background-image: url('<%= asset_path('completed_workout.jpg') %>');">
-        <h3>Plan ID: <%= plan.id %></h3>
-        <h5>Congratulations! You have completed Plan <%= plan.id %>! 🙌</h5>
+      <div class="card-plan-background" style="background-image: url('<%= asset_path('completed_workout.jpg') %>'); background-size: cover;">
+        <div class="card-plan text-center p-4 m-2">
+          <h3>Plan ID: <%= plan.id %></h3>
+          <h5>Congratulations! You have completed Plan <%= plan.id %>! 🙌</h5>
+        </div>
       </div>
       </a>
     <% end %>
