@@ -6,7 +6,8 @@ class OpenAiService
       messages: [{ role: "user", content: "#{prompt}.
         Give me only the answer ralated to fitness,
         without any of your own answer'.
-        Answer 'Please ask correct question' if the question is not related to fitness."}]
+        Answer 'Please ask correct question' if the question is not related to fitness."
+        }]
     })
   end
   # chaptgpt_response["choices"][0]["message"]["content"]
