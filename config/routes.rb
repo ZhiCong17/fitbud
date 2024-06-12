@@ -23,4 +23,6 @@ Rails.application.routes.draw do
   resources :exercise_plans do
     resources :trackers, only: %i[create]
   end
+
+  get 'chats', to: 'chats#index'
 end
