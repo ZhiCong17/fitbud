@@ -5,9 +5,21 @@ import { Timer } from "easytimer.js";
 export default class extends Controller {
   static targets = ["exercise", "tracker", "form"]
 
-  // timer = new Timer({startValues: { minutes: 1, seconds: 30 }});
 
   connect() {
+    this.timer = new Timer();
+
+    this.timer.start({countdown: true, startValues: {seconds: 5}});
+    // timer.start();
+
+    this.timer.addEventListener('secondsUpdated', function (e) {
+      console.log(e.detail.timer.getTimeValues());
+    });
+
+    this.timer.addEventListener('targetAchieved', function (e) {
+      console.log(e);
+  });
+
     //  this.timeTarget.innerText = this.timer.getTimeValues().toString();
   }
 
