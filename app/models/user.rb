@@ -12,12 +12,13 @@ class User < ApplicationRecord
   validates :height, :weight, presence: true, if: :persisted?
   validates :gender, presence: true, inclusion: { in: GENDER }, if: :persisted?
   validates :fitness_goal, presence: true, inclusion: { in: FITNESS_GOAL }, if: :persisted?
+  validates :username, presence: true, uniqueness: true, if: :persisted?
 
   def current_plan
     plans.where("progress<100").first
   end
 
-  def bmi(user)
-    @bmi = user.weight / ((user.height / 100.0)**2)
+  def bmi
+    weight / ((height / 100.0)**2)
   end
 end
