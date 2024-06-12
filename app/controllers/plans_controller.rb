@@ -1,10 +1,6 @@
 require 'json'
 
 class PlansController < ApplicationController
-
-  def index
-  end
-
   def show
     plan = Plan.find(params[:id])
     @exercise_plans = plan.find
