@@ -5,7 +5,6 @@ import { Timer } from "easytimer.js";
 export default class extends Controller {
   static targets = ["exercise", "tracker", "form"]
 
-
   connect() {
     this.timer = new Timer();
 
