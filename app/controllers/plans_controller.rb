@@ -19,7 +19,4 @@ class PlansController < ApplicationController
       redirect_to plan_path(plan), alert: "New Workout plan created"
     end
   end
-
-  def set_image(exercise)
-  end
 end

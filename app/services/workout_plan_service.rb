@@ -2,8 +2,8 @@ class WorkoutPlanService
   def self.create_plan(user_id, workout_plan)
     user = User.find(user_id)
     plan = Plan.create(
-                      user: user,
-                      progress: 0
+                        user: user,
+                        progress: 0
                       )
     rest_day = Exercise.find_by(description: "Rest day")
 
@@ -25,10 +25,12 @@ class WorkoutPlanService
           current_exercise_storage = Exercise.find_by(title: exercise_details["name"])
 
           if current_exercise_storage.nil?
+            video = YoutubeService::search_videos(exercise_details["name"])
             exercise = Exercise.create!(
               title: exercise_details["name"],
               description: exercise_details["description"], # If no description provided, set to an empty string
-              exercise_plan_id: ""
+              exercise_plan_id: "",
+              video: video
             )
             exercise_plan = ExercisePlan.create!(
               description: description,
