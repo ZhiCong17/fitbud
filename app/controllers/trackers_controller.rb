@@ -7,6 +7,8 @@ class TrackersController < ApplicationController
 
     respond_to do |format|
       if @tracker.save
+        format.html { redirect_to plan_exercise_plan_path(@exercise_plan.plan, @exercise_plan) }
+        format.json
       else
         format.html { render "exercise_plans/show", status: :unprocessable_entity }
         format.json
