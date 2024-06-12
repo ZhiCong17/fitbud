@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user.update(user_params)
     # user = User.new(user_params)
     if @user.save
-      redirect_to users_path, alert: "Profile updated"
+      redirect_to users_path, notice: "Profile updated"
     else
       render :profile, status: :unprocessable_entity
     end
