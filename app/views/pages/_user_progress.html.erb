@@ -25,6 +25,7 @@
     </span>
     <% exercise_plan_by_day = current_user.current_plan.exercise_plans.group_by(&:suggested_day) %>
     <%# <ul> %>
+
     <% order = 1 %>
       <% exercise_plan_by_day.each do | days, exercise_plan | %>
       <% statuses = exercise_plan.map { |plan| plan.status } %>
