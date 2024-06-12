@@ -14,9 +14,12 @@ class PlansController < ApplicationController
   def create
     user = current_user
     plan = Plan.new()
-    workout_plan = plan.create(user)
+    workout_plan = plan.create_plan(user)
     if plan = WorkoutPlanService.create_plan(user.id, workout_plan)
       redirect_to plan_path(plan), alert: "New Workout plan created"
     end
+  end
+
+  def set_image(exercise)
   end
 end
