@@ -4,6 +4,7 @@ class TrackersController < ApplicationController
     @exercise_plan = ExercisePlan.find(params[:exercise_plan_id])
     @next_exercise_plan = ExercisePlan.find(params[:exercise_plan_id].to_i + 1)
     @tracker.exercise_plan = @exercise_plan
+    @no_of_sets = @exercise_plan.trackers.count
 
     respond_to do |format|
       if @tracker.save

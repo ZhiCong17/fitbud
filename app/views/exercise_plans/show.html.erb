@@ -8,8 +8,10 @@
   <p class="mb-2">Enter your set details: </p>
   <%= render "exercise_plans/form", exercise_plan: @exercise_plan, tracker: @tracker %>
 
-  <div data-workout-target="tracker ">
-    <%= render "exercise_plans/tracker", tracker: @tracker %>
+  <div data-workout-target="tracker">
+    <% @exercise_plan.trackers.each_with_index do |tracker, index| %>
+      <%= render "exercise_plans/tracker", tracker: tracker, index: index %>
+    <% end %>
   </div>
 
 

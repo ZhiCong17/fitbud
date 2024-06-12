@@ -24,7 +24,10 @@ export default class extends Controller {
     .then(data => {
 
       if (data.success) {
-        this.trackerTarget.insertAdjacentHTML("beforeend", data.inserted_item)
+        console.log(data);
+        this.formTarget.outerHTML = data.form
+        this.trackerTarget.insertAdjacentHTML("beforeend", data.inserted_item_tracker)
+        this.exerciseTarget.innerHTML = data.inserted_item_exercise
       }
       else {
         this.formTarget.outerHTML = data.form
