@@ -1,0 +1,19 @@
+<div class="container">
+  <% if @completed_plans.empty? %>
+    <div class="card text-center m-3 border border-0 fst-italic">
+      <h2>You have no workout plan completed yet~!</h2>
+      <div class="justify-content-center d-flex">
+        <%= image_tag("https://us.123rf.com/450wm/rastudio/rastudio1608/rastudio160801788/61300305-man-exercising-with-barbell-vector-sketch-icon-isolated-on-background-hand-drawn-man-exercising-with.jpg", height: "368", width: "368", alt: "empty workout plan") %>
+      </div>
+    </div>
+  <% else %>
+    <% @completed_plans.each do |plan| %>
+      <a href="<%= plan_path(plan) %>" class="text-decoration-none text-white">
+      <div class="card-plan text-center border border-dark p-4 m-2" style="background-image: url('<%= asset_path('completed_workout.jpg') %>');">
+        <h3>Plan ID: <%= plan.id %></h3>
+        <h5>Congratulations! You have completed Plan <%= plan.id %>! 🙌</h5>
+      </div>
+      </a>
+    <% end %>
+  <% end %>
+</div>
