@@ -24,5 +24,11 @@ Rails.application.routes.draw do
     resources :trackers, only: %i[create]
   end
 
-  get 'chats', to: 'chats#index'
+  resources :chats, only: %i[index] do
+    collection do
+      post :message
+    end
+  end 
+
+  # resources :chat_responses, only: %i[show]
 end
