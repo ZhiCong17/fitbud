@@ -1,10 +1,9 @@
-<% require 'json' %>
+<%# require "json" %>
 <div class="container" data-controller="workout">
 
   <div data-workout-target="exercise">
     <%= render "exercise_plans/exercise", exercise_plan: @exercise_plan %>
   </div>
-
 
   <p class="mb-2">Enter your set details: </p>
   <%= render "exercise_plans/form", exercise_plan: @exercise_plan, tracker: @tracker %>
