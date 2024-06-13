@@ -2,25 +2,25 @@
 
   <div class="navbar-user d-flex justify-content-evenly align-items-center py-2">
     <div>
-      <%= link_to raw('<i class="fa-solid fa-house fa-2xl"></i>'), root_path, class: "text-decoration-none text-reset" %>
+      <%= link_to raw('<i class="fa-solid fa-house fa-xl"></i>'), root_path, class: "text-decoration-none text-reset" %>
     </div>
 
     <div>
-      <%= link_to raw('<i class="fa-solid fa-comment fa-2xl"></i>'), chats_path, class: "text-decoration-none text-reset"%>
+      <%= link_to raw('<i class="fa-solid fa-comment fa-xl"></i>'), chats_path, class: "text-decoration-none text-reset"%>
     </div>
 
     <div>
-      <%= link_to raw('<i class="fa-solid fa-dumbbell fa-2xl"></i>' ), plan_exercise_plan_path(current_user.current_plan, current_user.current_plan.exercise_plans.first) , class: "text-decoration-none text-reset" %>
+      <%= link_to raw('<i class="fa-solid fa-dumbbell fa-xl"></i>' ), plan_exercise_plan_path(current_user.current_plan, current_user.current_plan.exercise_plans.first) , class: "text-decoration-none text-reset" %>
       <%#= link_to raw('<i class="fa-solid fa-dumbbell fa-2xl"></i>'), exercise_plan_path(current_user.current_plan.exercise_plans.first), class: "text-decoration-none text-reset" %>
     </div>
 
     <div>
-      <%= link_to raw('<i class="fa-solid fa-user fa-2xl"></i>'), profile_path, class: "text-decoration-none text-reset" %>
+      <%= link_to raw('<i class="fa-solid fa-user fa-xl"></i>'), profile_path, class: "text-decoration-none text-reset" %>
     </div>
 
     <div data-action="click->sub-menu-toggle#display">
     <%# <button > %>
-      <i class="fa-solid fa-bars fa-2xl"></i>
+      <i class="fa-solid fa-bars fa-xl"></i>
     <%# </button> %>
     </div>
   </div>
