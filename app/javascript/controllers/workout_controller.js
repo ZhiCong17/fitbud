@@ -3,35 +3,42 @@ import { Timer } from "easytimer.js";
 
 // Connects to data-controller="countdown"
 export default class extends Controller {
-  static targets = ["exercise", "tracker", "form"]
+  static targets = ["exercise", "tracker", "form", "trackerCount", "time", "set"]
+  static values = {
+    alarm: String
+  }
 
   connect() {
-    this.timer = new Timer();
+    this.timer = new Timer({startValues: {seconds: 3}});
 
-    this.timer.start({countdown: true, startValues: {seconds: 5}});
-    // timer.start();
+    this.timeTarget.innerText = this.timer.getTimeValues().toString().substring(3);
 
-    this.timer.addEventListener('secondsUpdated', function (e) {
-      console.log(e.detail.timer.getTimeValues());
-    });
-
-    this.timer.addEventListener('targetAchieved', function (e) {
-      console.log(e);
-  });
-
-    //  this.timeTarget.innerText = this.timer.getTimeValues().toString();
+    this.alarm = new Audio(this.alarmValue);
   }
 
   continueExercise(data) {
     console.log('continuing...');
+
+    this.startTimer()
+
+    this.trackerCountTarget.innerText = data.set
     this.formTarget.outerHTML = data.tracker_form
-    this.exerciseTarget.innerHTML = data.inserted_item_exercise
+    // this.exerciseTarget.innerHTML = data.inserted_item_exercise
     this.trackerTarget.insertAdjacentHTML("beforeend", data.inserted_item_tracker)
+
+    this.countdownComplete()
   }
 
   nextExercise(data) {
     console.log('nextExercise');
-    window.location.href = data.next_exercise
+
+    this.startTimer()
+
+    this.trackerCountTarget.innerText = data.set
+    this.formTarget.outerHTML = data.tracker_form
+    this.trackerTarget.insertAdjacentHTML("beforeend", data.inserted_item_tracker)
+
+    this.countdownComplete(data.next_exercise)
   }
 
   formError(data) {
@@ -47,8 +54,44 @@ export default class extends Controller {
     this.trackerTarget.insertAdjacentHTML("afterbegin", data.completion_message)
   }
 
+  startTimer() {
+    this.timer.start({countdown: true, startValues: {seconds: 3}});
+
+    this.timer.addEventListener('secondsUpdated', function (e) {
+      console.log(e.detail.timer.getTimeValues().toString());
+      this.timeTarget.innerText = e.detail.timer.getTimeValues().toString().substring(3);
+    }.bind(this));
+  }
+
+  resetTimer() {
+    this.timer.reset();
+    this.timer.pause();
+    this.timeTarget.innerText = this.timer.getTimeValues().toString().substring(3);
+    // to add alarm sound file
+  }
+
+  countdownComplete(next_exercise) {
+    this.timer.addEventListener('targetAchieved',  function (e) {
+      console.log("Rest over");
+
+      this.alarm.play();
+        // if this is the last set
+        if (this.trackerCountTarget.innerText == this.setTarget.innerText) {
+          // then redirect
+          setTimeout(() => {
+            window.location.href = next_exercise
+          }, 2000);
+        }
+        // if not then reset
+        else {
+          this.resetTimer();
+        }
+    }.bind(this));
+  }
+
   updateSet(event) {
     event.preventDefault();
+
     const url = event.currentTarget.action
 
     fetch(url, {
@@ -60,36 +103,3 @@ export default class extends Controller {
     .then(data => this[data.status](data))
   }
 }
-  // startTimer() {
-  //   this.timer.start({ countdown: true, startValues: { minutes: 1, seconds: 30 } });
-
-  //   this.updateTimerDisplay();
-  // }
-
-  // updateTimerDisplay() {
-    // let timerDisplay = this.timeTarget.innerText
-
-    // if (timerDisplay) {
-    //   timerDisplay = this.timer.getTimeValues().toString();
-    // }
-    // console.log(this.timer.getTimeValues());
-
-    // fetch(this.timer.getTimeValues())
-    //   .then(response => console.log(response.json()))
-    //   .then((data) => {
-    //     console.log(data);
-    //   })
-
-  // countdown() {
-  //   timer.start({countdown: true, startValues: {seconds: 30}});
-
-  //   $('#countdownExample .values').html(timer.getTimeValues().toString());
-
-  //   timer.addEventListener('secondsUpdated', function (e) {
-  //       $('#countdownExample .values').html(timer.getTimeValues().toString());
-  //   });
-
-  //   timer.addEventListener('targetAchieved', function (e) {
-  //       $('#countdownExample .values').html('KABOOM!!');
-  //   });
-  // }
