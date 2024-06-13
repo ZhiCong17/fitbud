@@ -1,10 +1,22 @@
 <div class='row justify-content-center'>
-  <div class='card col-10 py-4 mb-2'>
-    Hi
-    <%= current_user.username %>
-  </div>
 
-  <div class='card col-10 py-4 mb-2'>
+  <div class="card-user">
+    <% if current_user.gender.nil? %>
+      <img src="https://hanifmedical.com/wp-content/uploads/2020/11/no-avatar-png-transparent-png-download-for-free-3856300-trzcacak-png-avatar-920_954.jpg" />
+    <% elsif current_user.gender ==  "Female" %>
+      <img src="https://t4.ftcdn.net/jpg/01/81/17/15/360_F_181171506_Kk3b3b2W6aFHXSHSZv7o7IayyLs7Vbcg.jpg" />
+    <% else %>
+      <img src="https://t4.ftcdn.net/jpg/01/24/97/71/360_F_124977133_4vnwH2HBN9MIhBMZ7BtmUVJeS6Xb1rlw.jpg"/>
+    <% end %>
+
+    <div class="card-message col-10 px-5">
+      <h4>Hi <%= current_user.username.capitalize %> </h4>
+    </div>
+
+</div>
+
+
+  <div class='card col-10 py-5 my-3'>
     <%#= link_to(plan_path(current_user.current_plan),{class: 'text-decoration-none'}) do  %>
 
     <%= link_to(plan_path(current_user.current_plan),{class: 'text-decoration-none'}) do  %>
@@ -31,12 +43,22 @@
       <% statuses = exercise_plan.map { |plan| plan.status } %>
       <% if  order <= 3 %>
         <% if statuses.include?(nil) %>
+          <% if order == 1 %>
+            <%= link_to(plan_exercise_plan_path(current_user.current_plan, current_user.current_plan.exercise_plans.first), {class: "text-decoration-none"} ) do %>
+              <div class="card p-2 mb-2">
+                Day <%= days %>:
+                <%= exercise_plan.first["description"]%>
+              </div>
+              <% order += 1 %>
+            <% end %>
+          <% else %>
             <%# <li> <%= exercise_plan.exercise.title %> <%# </li> %>
             <div class="card p-2 mb-2">
               Day <%= days %>:
               <%= exercise_plan.first["description"]%>
             </div>
             <% order += 1 %>
+          <% end %>
         <% end %>
       <% else %>
         <% break %>
