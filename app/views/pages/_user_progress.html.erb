@@ -39,7 +39,7 @@
             <%# <% raise %>
             <% else %>
                 <div class="card p-2 mb-2 locked">
-                <strong>Locked🔐</strong>
+                <strong>🔐 Please complete Day <%= current_user.current_plan.current_day %> exercise first!!!</strong>
                 Day <%= days %>:
                 <%= exercise_plan.first["description"]%>
               </div>
