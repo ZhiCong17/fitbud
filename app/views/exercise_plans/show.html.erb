@@ -1,5 +1,4 @@
-<%# require "json" %>
-<div class="container" data-controller="workout">
+<div class="container" data-controller="workout" data-workout-alarm-value="<%= asset_path("alarm.mp3")%>">
 
   <div data-workout-target="exercise">
     <%= render "exercise_plans/exercise", exercise_plan: @exercise_plan %>

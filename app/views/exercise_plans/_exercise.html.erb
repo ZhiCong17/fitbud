@@ -7,11 +7,11 @@
     <p class="text-center mb-0">Reps</p>
   </div>
   <div>
-    <p class="border border-dark circle-large mb-2" data-countdown-target="time">2:00</p>
+    <p class="border border-dark circle-large mb-2" data-workout-target="time">00:00</p>
     <p class="text-center mb-0">Rest</p>
   </div>
   <div>
-    <p class="border border-dark circle-small mb-2"><span data-workout-target="set"><%= exercise_plan.trackers.count %></span>/<%= exercise_plan.set %></p>
+    <p class="border border-dark circle-small mb-2"><span data-workout-target="trackerCount"><%= exercise_plan.trackers.count %></span>/<span data-workout-target="set"><%= exercise_plan.set %></span></p>
     <p class="text-center mb-0">Sets</p>
   </div>
 </div>
