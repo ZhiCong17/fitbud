@@ -39,16 +39,24 @@ export default class extends Controller {
         const answerFromBot = data.response.choices[0].message.content ;
 
         // this.answerTarget.innerHTML = answerFromBot;
-        this.answerTarget.insertAdjacentHTML("beforeend", this.formatBotMessage(answerFromBot));
+        // this.answerTarget.insertAdjacentHTML("beforeend", this.formatBotMessage(answerFromBot));
+        // this.answerTarget.scrollTo(0, this.answerTarget.scrollHeight);
+
+        this.#insertMessageAndScrollDown(this.formatBotMessage(answerFromBot));
       })
 
   }
 
+  #insertMessageAndScrollDown(message) {
+    this.answerTarget.insertAdjacentHTML("beforeend", message)
+    this.answerTarget.scrollTo(0, this.answerTarget.scrollHeight)
+  }
+
   formatBotMessage(message) {
-    return `<div class="bot-message card">${message}</div>`;
+    return `<div class="bot-message mb-2">${message}</div>`;
   }
 
   formatUserMessage(message) {
-    return `<div class="user-message card">${message}</div>`;
+    return `<div class="user-message mb-2">${message}</div>`;
   }
 }

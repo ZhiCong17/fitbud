@@ -31,12 +31,22 @@
       <% statuses = exercise_plan.map { |plan| plan.status } %>
       <% if  order <= 3 %>
         <% if statuses.include?(nil) %>
+          <% if order == 1 %>
+            <%= link_to(plan_exercise_plan_path(current_user.current_plan, current_user.current_plan.exercise_plans.first), {class: "text-decoration-none"} ) do %>
+              <div class="card p-2 mb-2">
+                Day <%= days %>:
+                <%= exercise_plan.first["description"]%>
+              </div>
+              <% order += 1 %>
+            <% end %>
+          <% else %>
             <%# <li> <%= exercise_plan.exercise.title %> <%# </li> %>
             <div class="card p-2 mb-2">
               Day <%= days %>:
               <%= exercise_plan.first["description"]%>
             </div>
             <% order += 1 %>
+          <% end %>
         <% end %>
       <% else %>
         <% break %>
