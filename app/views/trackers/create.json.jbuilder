@@ -5,6 +5,7 @@ if @tracker.persisted?
   json.set @exercise_plan.no_of_sets
   # sets completed
   if @exercise_plan.complete_set?
+    @exercise_plan.complete!
     # json.inserted_item_exercise render(partial: "exercise_plans/exercise", formats: :html, locals: { exercise_plan: @exercise_plan })
 
     # jump to next exercise

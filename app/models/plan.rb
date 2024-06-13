@@ -7,13 +7,19 @@ class Plan < ApplicationRecord
     ExercisePlan.where(plan: self)
   end
 
+  def progress_status
+    total_exercise_plans = (self.exercise_plans.count).to_f
+    completed_exercise_plans = (self.exercise_plans.where(status: "Complete").count).to_f
+    progress = ((completed_exercise_plans / total_exercise_plans).to_f) * 100
+  end
+
   def create_plan(user)
     client = OpenAI::Client.new
     content = <<~PROMPT
       "Give me a 1 week gym workout plan for a beginner.
       The plan should be for a #{user.age} year #{user.gender}, #{user.weight}kg, #{user.height}cm, looking to #{user.fitness_goal}.
-      Breakdown the plan in terms of days just present by integer like 1,2,3....(dont want show as day format).
-      Each day could consist of own description and multiple exercises, each exercise can be broken down into one instance which are include name, short description, sets, reps, weight show float, and/or duration. if the exercise requires, you can include a rest time.
+      Breakdown the plan in terms of days just present by integer like 1,2,3...(dont want show as day format).
+      Each day could consist of own description and at least 5 exercises, each exercise can be broken down into one instance which are include name, guide instruction steps(array), sets, reps, weight show float, and/or duration show second. If the exercise requires, you can include a rest time.
       Format your output into a json response"
     PROMPT
     begin

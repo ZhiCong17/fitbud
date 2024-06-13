@@ -4,7 +4,6 @@
     <%= render "exercise_plans/exercise", exercise_plan: @exercise_plan %>
   </div>
 
-
   <p class="mb-2">Enter your set details: </p>
   <%= render "exercise_plans/form", exercise_plan: @exercise_plan, tracker: @tracker %>
 
@@ -14,15 +13,28 @@
     <% end %>
   </div>
 
-
   <div class="video-container mb-3 rounded">
-    <iframe class="video" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=V0zo0dR5x2hAXNTJ&amp;controls=0"
+    <iframe class="video" src="https://www.youtube.com/embed/<%=@exercise_plan.exercise.video%>?si=V0zo0dR5x2hAXNTJ&amp;controls=0"
     title="YouTube video player" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
     </iframe>
   </div>
   <div class="bg-secondary" style="height:240px;">
     <p class="text-center">
+
+    <% if @exercise_plan.exercise.description.empty? %>
       Exercise description
+    <% else %>
+      <% begin %>
+        <% exercise_instructions = JSON.parse(@exercise_plan.exercise.description) %>
+        <%exercise_instructions.each do |instruction|  %>
+        <ol>
+        <li><%= instruction %></li>
+        </ol>
+        <% end %>
+        <% rescue JSON::ParserError %>
+        <%= @exercise_plan.exercise.description %>
+      <% end %>
+    <% end %>
     </p>
   </div>
 </div>

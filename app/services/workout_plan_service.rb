@@ -28,10 +28,11 @@ class WorkoutPlanService
             video = YoutubeService::search_videos(exercise_details["name"])
             exercise = Exercise.create!(
               title: exercise_details["name"],
-              description: exercise_details["description"], # If no description provided, set to an empty string
+              description: exercise_details["instructions"], # If no description provided, set to an empty string
               exercise_plan_id: "",
               video: video
             )
+            
             exercise_plan = ExercisePlan.create!(
               description: description,
               order: order_num,

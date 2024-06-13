@@ -15,7 +15,7 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true, if: :persisted?
 
   def current_plan
-    plans.where("progress<100").first
+    plans.where("progress<100").last
   end
 
   def bmi

@@ -7,7 +7,7 @@
             <%# use the ai-generate image service %>
             <%# <% url =  WorkoutPlanService::set_image (exercise_plans_by_day.first.description) %>
             <%#=style="background-image: url('<%= url >')" %>
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= index %>" aria-expanded="true" aria-controls="collapse<%= index %>">
+            <button class="accordion-button focus-item" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= index %>" aria-expanded="true" aria-controls="collapse<%= index %>">
               <div class= "text-white mx-5">
               <h2>
                 <strong>Day: <%= suggested_day %> </strong>
@@ -16,7 +16,7 @@
               </div>
             </button>
           </h2>
-          <div id="collapse<%= index %>" class="accordion-collapse collapse<%= index == 0 ? ' show' : '' %>" aria-labelledby="heading<%= index %>" data-bs-parent="#accordionExample">
+          <div id="collapse<%= index %>" class="accordion-collapse collapse<%= index + 1 == @plan.current_day  ? ' show' : '' %>" aria-labelledby="heading<%= index %>" data-bs-parent="#accordionExample" <%= 'autofocus' if index + 1 == @plan.current_day %>>
             <% exercise_plans_by_day.each_with_index do |exercise_plan, exercise_plan_index| %>
             <% if exercise_plan.exercise.description != "Rest day" %>
               <%= link_to(plan_exercise_plan_path(exercise_plan.plan, exercise_plan), {class: "text-decoration-none text-black"}) do %>
@@ -32,3 +32,18 @@
     </div>
   </div>
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var focusButton = document.querySelector('.focus-item');
+    console.log(focusButton);
+    if (focusButton) {
+      focusButton.click(); // Open the focused item
+      setTimeout(function() {
+        var panel = focusButton.closest('.accordion-item');
+        if (panel) {
+          panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100); // Adjust the delay as needed (in milliseconds)
+    }
+  });
+</script>
