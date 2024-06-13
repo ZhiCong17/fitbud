@@ -32,7 +32,7 @@ class WorkoutPlanService
               exercise_plan_id: "",
               video: video
             )
-            
+
             exercise_plan = ExercisePlan.create!(
               description: description,
               order: order_num,
@@ -70,6 +70,9 @@ class WorkoutPlanService
   end
 
   def self.set_image(exercise)
+    existing_record = ExerciseImage.find_by(description: exercise)
+    return existing_record.image_url if existing_record
+
     client = OpenAI::Client.new
     prompt = <<~PROMPT
       An image of #{exercise}
@@ -85,6 +88,9 @@ class WorkoutPlanService
         # "1024x1024"
       })
       url = response["data"][0]["url"]
+      uploaded_image = Cloudinary::Uploader.upload(url)
+      ExerciseImage.create!(description: exercise, image_url: uploaded_image["secure_url"])
+      uploaded_image["secure_url"]
     rescue Faraday::TooManyRequestsError => e
       puts "Rate limit exceeded. Waiting for 5 seconds."
       sleep(5)
