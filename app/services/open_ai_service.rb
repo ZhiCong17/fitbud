@@ -11,4 +11,16 @@ class OpenAiService
     })
   end
   # chaptgpt_response["choices"][0]["message"]["content"]
+
+  # def self.message
+  #   client = OpenAI::Client.new
+  #   chaptgpt_response = client.chat(parameters: {
+  #     model: "gpt-3.5-turbo",
+  #     messages: [{ role: "user", content: "
+  #       Give me encourage message,
+  #       only in 1 sentence.
+  #       without any of your own answer'."
+  #       }]
+  #     })
+  # end
 end
