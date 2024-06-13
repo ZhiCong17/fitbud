@@ -32,16 +32,19 @@
         <% if statuses.include?(nil) %>
             <% if current_user.current_plan.current_day == days %>
               <div class="card p-2 mb-2">
-                Day <%= days %>:
+              <h6>
+                💪 Day <%= days %>:
                 <%= exercise_plan.first["description"]%>
+              </h6>
               </div>
               <% order += 1 %>
             <%# <% raise %>
             <% else %>
                 <div class="card p-2 mb-2 locked">
-                <strong>🔐 Please complete Day <%= current_user.current_plan.current_day %> exercise first!!!</strong>
-                Day <%= days %>:
+                <h6>
+                🔐  Day <%= days %>:
                 <%= exercise_plan.first["description"]%>
+                </h6>
               </div>
               <% order += 1 %>
             <% end %>
