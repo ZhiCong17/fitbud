@@ -21,14 +21,19 @@
   </div>
   <div class="bg-secondary" style="height:240px;">
     <p class="text-center">
+  
     <% if @exercise_plan.exercise.description.empty? %>
       Exercise description
     <% else %>
-      <% exercise_instructions = JSON.parse(@exercise_plan.exercise.description) %>
-      <%exercise_instructions.each do |instruction|  %>
-      <ol>
-      <li><%= instruction %></li>
-      </ol>
+      <% begin %>
+        <% exercise_instructions = JSON.parse(@exercise_plan.exercise.description) %>
+        <%exercise_instructions.each do |instruction|  %>
+        <ol>
+        <li><%= instruction %></li>
+        </ol>
+        <% end %>
+        <% rescue JSON::ParserError %>
+        <%= @exercise_plan.exercise.description %>
       <% end %>
     <% end %>
     </p>
