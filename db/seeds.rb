@@ -28,7 +28,7 @@ exercise3 = Exercise.create!(title: "Dumbbell Lunges", description: "bodyweight 
 exercise4 = Exercise.create!(title: "Dumbbell Rows", description: "bodyweight squat involves shifting your hips back" , video: "https://www.youtube.com/watch?v=8uoaYwS6iFM" )
 exercise5 = Exercise.create!(title: "Plank", description: "bodyweight squat involves shifting your hips back" , video: "https://www.youtube.com/watch?v=8uoaYwS6iFM" )
 exercise6 = Exercise.create!(title: "Cool down", description: "bodyweight squat involves shifting your hips back" , video: "https://www.youtube.com/watch?v=8uoaYwS6iFM" )
-exercise7 = Exercise.create!(title: "Rest Day", description: "bodyweight squat involves shifting your hips back" , video: "https://www.youtube.com/watch?v=8uoaYwS6iFM" )
+exercise7 = Exercise.create!(title: "", description: "Rest day", video: " " )
 
 puts "Creating Exercise Plan..."
 exercise_plan1 = ExercisePlan.create!(set: 3, repetitions: 20, suggested_day: 1, duration: 20, exercise: exercise1, plan: plan1, status: "Incomplete", order: 1, description: "Upper body"  )
