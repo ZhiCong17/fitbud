@@ -24,24 +24,31 @@
       Display next 3 days exercise plan
     </span>
     <% exercise_plan_by_day = current_user.current_plan.exercise_plans.group_by(&:suggested_day) %>
-    <%# <ul> %>
-
     <% order = 1 %>
       <% exercise_plan_by_day.each do | days, exercise_plan | %>
       <% statuses = exercise_plan.map { |plan| plan.status } %>
       <% if  order <= 3 %>
+        <% current_user.current_plan.update!(current_day: days) if order ==1 %>
         <% if statuses.include?(nil) %>
-            <%# <li> <%= exercise_plan.exercise.title %> <%# </li> %>
-            <div class="card p-2 mb-2">
-              Day <%= days %>:
-              <%= exercise_plan.first["description"]%>
-            </div>
-            <% order += 1 %>
+            <% if current_user.current_plan.current_day == days %>
+              <div class="card p-2 mb-2">
+                Day <%= days %>:
+                <%= exercise_plan.first["description"]%>
+              </div>
+              <% order += 1 %>
+            <%# <% raise %>
+            <% else %>
+                <div class="card p-2 mb-2 locked">
+                <strong>Locked🔐</strong>
+                Day <%= days %>:
+                <%= exercise_plan.first["description"]%>
+              </div>
+              <% order += 1 %>
+            <% end %>
         <% end %>
       <% else %>
         <% break %>
       <% end %>
       <% end %>
-    <%# </ul> %>
   </div>
 </div>
