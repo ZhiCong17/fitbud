@@ -1,5 +1,6 @@
 if @tracker.persisted?
   if @exercise_plan.complete_set?
+    @exercise_plan.complete!
     if @exercise_plan.next_exercise_plan.present?
       json.next_exercise "http://localhost:3000/plans/#{@exercise_plan.plan.id}/exercise_plans/#{@exercise_plan.next_exercise_plan.id}"
       json.status "nextExercise"

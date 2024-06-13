@@ -1,3 +1,4 @@
+<% require 'json' %>
 <div class="container" data-controller="workout">
 
   <div data-workout-target="exercise">
@@ -14,15 +15,23 @@
     <% end %>
   </div>
 
-
   <div class="video-container mb-3 rounded">
-    <iframe class="video" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=V0zo0dR5x2hAXNTJ&amp;controls=0"
+    <iframe class="video" src="https://www.youtube.com/embed/<%=@exercise_plan.exercise.video%>?si=V0zo0dR5x2hAXNTJ&amp;controls=0"
     title="YouTube video player" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
     </iframe>
   </div>
   <div class="bg-secondary" style="height:240px;">
     <p class="text-center">
+    <% if @exercise_plan.exercise.description.empty? %>
       Exercise description
+    <% else %>
+      <% exercise_instructions = JSON.parse(@exercise_plan.exercise.description) %>
+      <%exercise_instructions.each do |instruction|  %>
+      <ol>
+      <li><%= instruction %></li>
+      </ol>
+      <% end %>
+    <% end %>
     </p>
   </div>
 </div>

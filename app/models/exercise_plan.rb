@@ -3,6 +3,10 @@ class ExercisePlan < ApplicationRecord
   belongs_to :exercise
   has_many :trackers
 
+  def complete!
+    self.update!(status: "Complete")
+  end
+
   def complete_set?
     set == trackers.count
   end

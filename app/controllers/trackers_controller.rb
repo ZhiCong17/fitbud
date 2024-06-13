@@ -4,6 +4,7 @@ class TrackersController < ApplicationController
     @exercise_plan = ExercisePlan.find(params[:exercise_plan_id])
     @tracker.exercise_plan = @exercise_plan
 
+
     respond_to do |format|
       if @tracker.save
         format.json

@@ -10,7 +10,7 @@
     <%= link_to(plan_path(current_user.current_plan),{class: 'text-decoration-none'}) do  %>
       <span>Current Plan Progress</span>
       <div class="progress my-3" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-      <div class="progress-bar progress-bar-striped" style="width: <%=current_user.current_plan.progress%>%"><%= current_user.current_plan.progress %>%</div>
+      <div class="progress-bar progress-bar-striped" style="width: <%=current_user.current_plan.progress_status%>%"><%= current_user.current_plan.progress_status.round(2) %>%</div>
       </div>
       <%# <%= current_user.current_plan.progress %>
     <% end %>
