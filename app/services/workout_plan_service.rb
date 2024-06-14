@@ -75,10 +75,11 @@ class WorkoutPlanService
 
     client = OpenAI::Client.new
     prompt = <<~PROMPT
-      An image of #{exercise}
+      An image of #{exercise} workout. 
       Subject should be focused in the center.
       Image should be in a realistic style.
-      Backgound is dark color.
+      Image must be a real photograph.
+      Background is dark color.
 
     PROMPT
     begin

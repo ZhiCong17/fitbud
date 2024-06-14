@@ -7,6 +7,7 @@
             <%# use the ai-generate image service %>
             <% url =  WorkoutPlanService::set_image (exercise_plans_by_day.first.description) %>
             <%#=style="background-image: url('<%= url >')" %>
+
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= index %>" aria-expanded="true" aria-controls="collapse<%= index %>" style="background-image: url('<%= url %>')">
               <div class= "text-white mx-5">
               <h2>
