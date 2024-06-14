@@ -10,7 +10,12 @@
     </div>
 
     <div>
-      <%= link_to raw('<i class="fa-solid fa-dumbbell fa-xl"></i>' ), plan_exercise_plan_path(current_user.current_plan, current_user.current_plan.exercise_plans.first) , class: "text-decoration-none text-reset" %>
+      <% if current_user.current_plan.nil? %>
+        <%#= link_to raw('<i class="fa-solid fa-plus fa-xl"></i>'), notify_path, class: "text-decoration-none text-reset" %>
+        <%= link_to raw('<i class="fa-solid fa-dumbbell fa-xl"></i>'), notify_path, class: "text-decoration-none text-reset" %>
+      <% else %>
+        <%= link_to raw('<i class="fa-solid fa-dumbbell fa-xl"></i>' ), plan_exercise_plan_path(current_user.current_plan, current_user.current_plan.exercise_plans.first) , class: "text-decoration-none text-reset" %>
+      <% end %>
       <%#= link_to raw('<i class="fa-solid fa-dumbbell fa-2xl"></i>'), exercise_plan_path(current_user.current_plan.exercise_plans.first), class: "text-decoration-none text-reset" %>
     </div>
 

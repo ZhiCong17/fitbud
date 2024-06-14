@@ -15,6 +15,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def notify
+    flash[:notice] = "No Workout Plan Found"
+    redirect_to root_path
+  end
+
   private
 
   def user_params
