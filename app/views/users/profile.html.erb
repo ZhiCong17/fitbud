@@ -1,16 +1,17 @@
 <div class="container">
   <%# <button type="button" class="btn btn-primary d-grid col-6 mx-auto mt-5">+ Add Workout Plan</button> %>
   <%# <%= link_to "+ Add Workout Plan", create_plan_path, class: "btn btn-primary d-grid col-6 mx-auto mt-5" %>
+
   <%= link_to "+ Add Workout Plan", create_plan_path, data:{ turbo_method: :post}, class: "btn btn-primary d-grid col-6 mx-auto mt-5" %>
 
-  <div class="card-wrapper text-center border border-black p-5 m-3">
+  <div class="card text-center border border-black p-5 m-3">
     <h3>Personalise fitness and health</h3>
     <p>This information ensures fitness data are as accurate as possible.</p>
-    <p>These data will not shared with US</p>
+    <p>And allow us to prepare most suitable exercises for you.</p>
   </div>
 
   <%# simple_form_for(current_user, html: { class: "d-flex row" }) do |f| %>
-  <div class="card-wrapper pt-4 pe-auto">
+  <div class="p-4 pe-auto">
     <%= simple_form_for(current_user) do |f| %>
       <%# <%= f.input :age, :collection => User::AGE %>
       <%= f.input :age, input_html: { min: '0', max: '99'}, wrapper_html: { class: "d-flex" }, label_html: {class:"col-4"}, input_html: {class:"g-col-8"} %>

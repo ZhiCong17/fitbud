@@ -26,29 +26,34 @@
   background: #2E3944;
   height: 56px;
   // position: absolute;
-  
+
+}
+
+.icon {
+  // color: #748d92;
+  color: #d3d9d4;
+
 }
 
 .log-out-home {
   background: #214E66;
   bottom: 0px;
   right: 0px;
-  padding: 4px 16px;
+  padding: 8px 16px;
   // margin: 2px 0;
   transition: 0.3s;
   // transform: translateY(0);
   transform: translate(100%, -200%);
-  // border-radius: 32px;
+  // border-radius: 8px;
 
   a {
     text-decoration: none;
-    color: white;
-    border-radius: 8px;
+    color: #212a31;
   }
 }
 
 .log-out-home.show {
-  transform: translate(-10%, -130%);
+  transform: translate(-15%, -100%);
   // transform: translate(100%, -200%);
 
 }
