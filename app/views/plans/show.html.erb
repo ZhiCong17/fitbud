@@ -22,7 +22,7 @@
             <% if exercise_plan.exercise.description != "Rest day" %>
               <%= link_to(plan_exercise_plan_path(exercise_plan.plan, exercise_plan), {class: "text-decoration-none text-black"}) do %>
               <div class="accordion-body border rounded-3">
-                <strong>Exercise<%= exercise_plan_index%>: <%= exercise_plan.exercise.title %></strong>
+                <strong>Exercise<%= exercise_plan_index + 1%>: <%= exercise_plan.exercise.title %></strong>
                 <% end %>
               </div>
               <% end %>

@@ -12,7 +12,6 @@ class Plan < ApplicationRecord
     total_exercise_plans = ((self.exercise_plans.count) - rest_exercise_plans).to_f
     completed_exercise_plans = (self.exercise_plans.where(status: "Complete").count).to_f
     progress = ((completed_exercise_plans / total_exercise_plans).to_f) * 100
-    
   end
 
   def create_plan(user)
