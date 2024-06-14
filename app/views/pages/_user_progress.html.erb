@@ -38,7 +38,7 @@
       <% exercise_plan_by_day.each do | days, exercise_plan | %>
       <% statuses = exercise_plan.map { |plan| plan.status } %>
       <% if  order <= 3 %>
-        <% current_user.current_plan.update!(current_day: days) if order ==1 %>
+        <%# current_user.current_plan.update!(current_day: days) if order ==1 %>
         <% if statuses.include?(nil) %>
           <%# edit here %>
           <%# url = find_url(current_user.current_plan.exercise_plans.first.description) %>
