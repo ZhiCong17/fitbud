@@ -33,4 +33,6 @@ Rails.application.routes.draw do
 
   # resources :chat_responses, only: %i[show]
   get 'plans_history', to: 'plans#plans_history'
+
+  get 'notify', to: 'users#notify', as: 'notify'
 end

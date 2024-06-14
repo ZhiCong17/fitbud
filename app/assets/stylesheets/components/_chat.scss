@@ -3,22 +3,32 @@
   // width: 100%;
   display: flex;
   flex-direction: column;
-  height: 70vh;
-  overflow-y: auto
+  height: 75vh;
+  overflow-y: auto;
+  background-color: #d3d9d4;
+  // border-radius: 10px;
 }
 
 .bot-message {
   background-color: #1F2833;
   color: #66FCF1;
-  margin-right: 30%;
+  // margin-right: 30%;
+  // margin: 0 auto;
   padding: 8px;
+  margin-right: auto;
+  width: auto;
+  max-width: 300px;
 }
 
 .user-message {
   background-color: #0B0C10;
   color: #66FCF1;
-  margin-left: 30%;
+  // margin-left: 30%;
+  // margin: 0 auto;
   padding: 8px;
+  margin-left: auto;
+  width: auto;
+  max-width: 300px;
 }
 
 .chat-box {
@@ -27,5 +37,6 @@
   position: fixed;
   bottom: 80px;
   // width: 100%;
-  margin: 0 auto;
+  // margin: 0 auto;
+  width: 94%;
 }

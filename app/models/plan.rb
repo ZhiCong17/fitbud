@@ -43,4 +43,5 @@ class Plan < ApplicationRecord
       retry
     end
   end
+  
 end
