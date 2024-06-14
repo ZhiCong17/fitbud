@@ -53,10 +53,10 @@ export default class extends Controller {
   }
 
   formatBotMessage(message) {
-    return `<div class="bot-message mb-2">${message}</div>`;
+    return `<div class="bot-message d-flex mb-2">${message}</div>`;
   }
 
   formatUserMessage(message) {
-    return `<div class="user-message mb-2">${message}</div>`;
+    return `<div class="user-message d-flex justify-content-end mb-2">${message}</div>`;
   }
 }
