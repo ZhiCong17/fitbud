@@ -1,10 +1,20 @@
 <div class='row justify-content-center'>
-  <div class='card col-10 py-4 mb-2'>
-    Hi
-    <%= current_user.username %>
+
+  <div class="card-user col-10 mt-5">
+    <% if current_user.gender.nil? %>
+      <img src="https://www.shutterstock.com/image-vector/user-profile-icon-vector-avatar-600nw-2247726673.jpg" />
+    <% elsif current_user.gender == "Female" %>
+      <img src="https://t4.ftcdn.net/jpg/01/81/17/15/360_F_181171506_Kk3b3b2W6aFHXSHSZv7o7IayyLs7Vbcg.jpg" />
+    <% else %>
+      <img src="https://i.pinimg.com/564x/0e/9b/ce/0e9bceffda12d948ebe741b5b25dcc16.jpg"/>
+    <% end %>
+
+    <div class='card-message col-10 px-3'>
+      Hi <%= current_user.username.capitalize %>
+    </div>
   </div>
 
-  <div class='card col-10 py-4 mb-2'>
+  <div class='card col-10 py-3 my-3'>
     <%#= link_to(plan_path(current_user.current_plan),{class: 'text-decoration-none'}) do  %>
 
     <%= link_to(plan_path(current_user.current_plan),{class: 'text-decoration-none'}) do  %>
@@ -19,7 +29,7 @@
   <%# plan = current_user.current_plan %>
   <%# exercise_plans = ExercisePlan.where(plan: plan) %>
 
-  <div class='card col-10 py-4 mb-2'>
+  <div class='card col-10 py-4'>
     <span class='mb-2 '>
       Display next 3 days exercise plan
     </span>
