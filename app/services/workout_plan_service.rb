@@ -36,7 +36,7 @@ class WorkoutPlanService
             exercise_plan = ExercisePlan.create!(
               description: description,
               order: order_num,
-              set: exercise_details["sets"],
+              set: exercise_details["sets"] || 1,
               repetitions: exercise_details["reps"],
               suggested_day: days,
               weight: exercise_details["weight"] || 0.0, # If no weight provided, set to 0.0
@@ -52,7 +52,7 @@ class WorkoutPlanService
             exercise_plan = ExercisePlan.create!(
               description: description,
               order: order_num,
-              set: exercise_details["sets"],
+              set: exercise_details["sets"] || 1,
               repetitions: exercise_details["reps"],
               suggested_day: days,
               weight: exercise_details["weight"] || 0.0, # If no weight provided, set to 0.0
@@ -75,7 +75,7 @@ class WorkoutPlanService
 
     client = OpenAI::Client.new
     prompt = <<~PROMPT
-      An image of #{exercise} workout. 
+      An image of #{exercise} workout.
       Subject should be focused in the center.
       Image should be in a realistic style.
       Image must be a real photograph.
