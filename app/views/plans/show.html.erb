@@ -18,13 +18,36 @@
             </button>
           </h2>
           <div id="collapse<%= index %>" class="accordion-collapse collapse<%= index + 1 == @plan.current_day  ? ' show' : '' %>" aria-labelledby="heading<%= index %>" data-bs-parent="#accordionExample" <%= 'autofocus' if index + 1 == @plan.current_day %>>
+            <% active_num = 1 %>
             <% exercise_plans_by_day.each_with_index do |exercise_plan, exercise_plan_index| %>
             <% if exercise_plan.exercise.description != "Rest day" %>
-              <%= link_to(plan_exercise_plan_path(exercise_plan.plan, exercise_plan), {class: "text-decoration-none text-black"}) do %>
-              <div class="accordion-body border rounded-3">
-                <strong>Exercise<%= exercise_plan_index + 1%>: <%= exercise_plan.exercise.title %></strong>
+
+              <% if exercise_plan.status == nil && active_num == 1 && exercise_plan.suggested_day == @plan.current_day%>
+                <%= link_to(plan_exercise_plan_path(exercise_plan.plan, exercise_plan), {class: "text-decoration-none text-black"}) do %>
+                <div class="accordion-body border rounded-3">
+                  <strong>💪Exercise <%= exercise_plan.order%>: <%= exercise_plan.exercise.title %></strong>
+                  <% active_num += 1 %>
+                  </div>
                 <% end %>
-              </div>
+              <% elsif exercise_plan.status == "Complete"  %>
+                <%= link_to(plan_exercise_plan_path(exercise_plan.plan, exercise_plan), {class: "text-decoration-none text-black"}) do %>
+                <div class="accordion-body border rounded-3">
+                  <strong class = "completed">✅Exercise <%= exercise_plan.order%>: <%= exercise_plan.exercise.title %></strong>
+                  <% active_num = 1 %>
+                  </div>
+                <% end %>
+
+              <% elsif @plan.current_day == @plan.rest_day %>
+
+                <% @plan.update!(current_day: @plan.current_day + 1 ) %>
+              <% else %>
+                <%= link_to(plan_exercise_plan_path(exercise_plan.plan, exercise_plan), {class: "text-decoration-none text-black"}) do %>
+                <div class="accordion-body border rounded-3 ">
+                  <strong class = "locked">🔐Exercise <%= exercise_plan.order%>: <%= exercise_plan.exercise.title %></strong>
+                  </div>
+                <% end %>
+
+                <% end %>
               <% end %>
             <% end %>
           </div>

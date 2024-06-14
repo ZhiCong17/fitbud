@@ -28,7 +28,7 @@
       <% exercise_plan_by_day.each do | days, exercise_plan | %>
       <% statuses = exercise_plan.map { |plan| plan.status } %>
       <% if  order <= 3 %>
-        <% current_user.current_plan.update!(current_day: days) if order ==1 %>
+        <%# current_user.current_plan.update!(current_day: days) if order ==1 %>
         <% if statuses.include?(nil) %>
             <% if current_user.current_plan.current_day == days %>
               <div class="card p-2 mb-2">

@@ -3,7 +3,8 @@ class WorkoutPlanService
     user = User.find(user_id)
     plan = Plan.create(
                         user: user,
-                        progress: 0
+                        progress: 0,
+                        current_day: 1
                       )
     rest_day = Exercise.find_by(description: "Rest day")
 

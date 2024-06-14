@@ -14,6 +14,11 @@ class Plan < ApplicationRecord
     progress = ((completed_exercise_plans / total_exercise_plans).to_f) * 100
   end
 
+  def rest_day
+    rest = self.exercise_plans.find_by(status: "rest")
+    rest_day = rest.suggested_day
+  end
+
   def create_plan(user)
     client = OpenAI::Client.new
     content = <<~PROMPT
@@ -21,6 +26,7 @@ class Plan < ApplicationRecord
       The plan should be for a #{user.age} year #{user.gender}, #{user.weight}kg, #{user.height}cm, looking to #{user.fitness_goal}.
       Breakdown the plan in terms of days just present by integer like 1,2,3...(dont want show as day format).
       Each day could consist of own description (must not include day )and at least 5 exercises, each exercise can be broken down into one instance which are include name, must have instructions (must be array), sets, reps, weight show float, and/or duration show second. If the exercise requires, you can include a rest time.
+      Without repeated day.
       For the Rest day must no has any exercises.
       Cardio is not consider is rest day.
       Format your output into a json response"
