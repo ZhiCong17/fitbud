@@ -1,6 +1,6 @@
 <div class="fixed-bottom" data-controller="sub-menu-toggle">
 
-  <div class="navbar-user d-flex justify-content-evenly align-items-center py-2">
+  <div class="navbar-user icon d-flex justify-content-evenly align-items-center py-2">
     <div>
       <%= link_to raw('<i class="fa-solid fa-house fa-xl"></i>'), root_path, class: "text-decoration-none text-reset" %>
     </div>
@@ -10,7 +10,7 @@
     </div>
 
     <div>
-      <%= link_to raw('<i class="fa-solid fa-dumbbell fa-xl"></i>' ), plan_exercise_plan_path(current_user.current_plan, current_user.current_plan.exercise_plans.first) , class: "text-decoration-none text-reset" %>
+      <%#= link_to raw('<i class="fa-solid fa-dumbbell fa-xl"></i>' ), plan_exercise_plan_path(current_user.current_plan, current_user.current_plan.exercise_plans.first) , class: "text-decoration-none text-reset" %>
       <%#= link_to raw('<i class="fa-solid fa-dumbbell fa-2xl"></i>'), exercise_plan_path(current_user.current_plan.exercise_plans.first), class: "text-decoration-none text-reset" %>
     </div>
 
@@ -25,9 +25,9 @@
     </div>
   </div>
 
-  <div class="log-out-home card rounded position-absolute" data-sub-menu-toggle-target="subMenu">
-    <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete} %>
-    <%= link_to "History", plans_history_path  %>
+  <div class="card log-out-home position-absolute" data-sub-menu-toggle-target="subMenu">
+      <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete} %>
+      <%= link_to "History", plans_history_path  %>
   </div>
 
 </div>

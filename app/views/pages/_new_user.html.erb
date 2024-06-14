@@ -1,26 +1,26 @@
 <div class='row justify-content-center'>
 
-  <div class="card-user">
+  <div class="card-user text-center col-10 mt-5">
     <% if current_user.gender.nil? %>
-      <img src="https://hanifmedical.com/wp-content/uploads/2020/11/no-avatar-png-transparent-png-download-for-free-3856300-trzcacak-png-avatar-920_954.jpg" />
+      <img src="https://www.shutterstock.com/image-vector/user-profile-icon-vector-avatar-600nw-2247726673.jpg" />
     <% elsif current_user.gender == "Female" %>
       <img src="https://t4.ftcdn.net/jpg/01/81/17/15/360_F_181171506_Kk3b3b2W6aFHXSHSZv7o7IayyLs7Vbcg.jpg" />
     <% else %>
-      <img src="https://st2.depositphotos.com/1104517/11965/v/950/depositphotos_119659092-stock-illustration-male-avatar-profile-picture-vector.jpg"/>
+      <img src="https://i.pinimg.com/564x/0e/9b/ce/0e9bceffda12d948ebe741b5b25dcc16.jpg"/>
     <% end %>
 
-  <div class='card-message col-10 px-5'>
-    Hi<%= current_user.username.capitalize %>
+  <div class='card-message px-3'>
+    Hi <%= current_user.username.capitalize %>
   </div>
 </div>
 
-  <div class='card col-10 py-5 mt-3 align-item-center text-center'>
+  <div class='card col-10 text-center mt-3 py-5'>
     <span>
       Your workout plan is empty.
     </span>
     <span>
       Let's add a workout plan.
     </span>
-    <%= link_to 'Add Workout Plan', root_path,
+    <%= link_to 'Add Workout Plan', profile_path,
     class: "btn btn-primary my-3" %>
   </div>
