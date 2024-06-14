@@ -19,7 +19,8 @@ class Plan < ApplicationRecord
       "Give me a 1 week gym workout plan for a beginner.
       The plan should be for a #{user.age} year #{user.gender}, #{user.weight}kg, #{user.height}cm, looking to #{user.fitness_goal}.
       Breakdown the plan in terms of days just present by integer like 1,2,3...(dont want show as day format).
-      Each day could consist of own description and at least 5 exercises, each exercise can be broken down into one instance which are include name, guide instruction steps(array), sets, reps, weight show float, and/or duration show second. If the exercise requires, you can include a rest time.
+      Each day could consist of own description (must not include day )and at least 5 exercises, each exercise can be broken down into one instance which are include name, must have instructions (must be array), sets, reps, weight show float, and/or duration show second. If the exercise requires, you can include a rest time.
+      For the Rest day must no has any exercises.
       Format your output into a json response"
     PROMPT
     begin
