@@ -8,7 +8,7 @@ if @tracker.persisted?
     @exercise_plan.complete!
     # json.inserted_item_exercise render(partial: "exercise_plans/exercise", formats: :html, locals: { exercise_plan: @exercise_plan })
 
-    # jump to next exercise
+    # jump to next exercis
     if @exercise_plan.next_exercise_plan.present?
       json.next_exercise "http://localhost:3000/plans/#{@exercise_plan.plan.id}/exercise_plans/#{@exercise_plan.next_exercise_plan.id}"
       json.status "nextExercise"
@@ -16,6 +16,7 @@ if @tracker.persisted?
     else
       json.completion_message "<p class='text-success'>Congratulations! You have completed your exercise for the day.</p>"
       json.status "workoutComplete"
+      @exercise_plan.plan.update!(current_day: @exercise_plan.plan.current_day + 1)
     end
   # continue to next set
   else

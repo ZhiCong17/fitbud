@@ -23,33 +23,44 @@
 
 
 .navbar-user {
-  background: #45A29E;
+  background: #2E3944;
   height: 56px;
   // position: absolute;
+
+}
+
+.icon {
+  // color: #748d92;
+  color: #d3d9d4;
 }
 
 .log-out-home {
-  background: #66FCF1;
+  background: #214E66;
   bottom: 0px;
   right: 0px;
-  padding: 4px 16px;
+  padding: 8px 16px;
   // margin: 2px 0;
   transition: 0.3s;
   // transform: translateY(0);
   transform: translate(100%, -200%);
+  // border-radius: 8px;
 
   a {
     text-decoration: none;
+    color: #212a31;
   }
 }
 
 .log-out-home.show {
-  transform: translate(-10%, -130%);
+  transform: translate(-15%, -100%);
   // transform: translate(100%, -200%);
-
 }
 
 .nav-visitor {
-  background: #1F2833;
-  color: #C5C6C7;
+  background: #748D92;
+  color: #f2f5f1;
+  border-radius: 8px;
+  height: 32px;
+  align-content: center;
+  font-weight: bold;
 }

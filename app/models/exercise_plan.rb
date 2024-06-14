@@ -26,4 +26,8 @@ class ExercisePlan < ApplicationRecord
   def duration_exercise?
     duration.positive? && set > 1
   end
+
+  def self.exercise_status
+    where(status: nil).first
+  end
 end
