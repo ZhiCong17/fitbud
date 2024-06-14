@@ -20,7 +20,7 @@ class ExercisePlan < ApplicationRecord
   end
 
   def cardio_exercise?
-    duration.positive? && set == nil
+    duration.positive? && set == 1
   end
 
   def duration_exercise?
