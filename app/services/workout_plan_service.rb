@@ -18,7 +18,8 @@ class WorkoutPlanService
             plan: plan,
             suggested_day: days,
             description: description,
-            exercise: rest_day
+            exercise: rest_day,
+            status: "rest"
           )
         else
           exercises.each do |exercise_details|
