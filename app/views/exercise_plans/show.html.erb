@@ -13,28 +13,23 @@
     <% end %>
   </div>
 
+  <p class="my-2">Video Guide:</p>
   <div class="video-container mb-3 rounded">
-    <iframe class="video" src="https://www.youtube.com/embed/<%=@exercise_plan.exercise.video%>?si=V0zo0dR5x2hAXNTJ&amp;controls=0"
+    <iframe class="video" src="https://www.youtube.com/embed/<%=@exercise_plan.exercise.video%>?si=V0zo0dR5x2hAXNTJ&amp;controls=1"
     title="YouTube video player" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
     </iframe>
   </div>
-  <div class="bg-secondary" style="height:240px;">
-    <p class="text-center">
-
-    <% if @exercise_plan.exercise.description.nil? %>
-      Exercise description
-    <% else %>
-      <% begin %>
-        <% exercise_instructions = JSON.parse(@exercise_plan.exercise.description) %>
-        <%exercise_instructions.each do |instruction|  %>
+  <p class="mb-2 mt-3">Instructions:</p>
+  <% unless @exercise_plan.exercise.description.nil? %>
+    <% begin %>
+      <% exercise_instructions = JSON.parse(@exercise_plan.exercise.description) %>
         <ol>
-        <li><%= instruction %></li>
+          <% exercise_instructions.each do |instruction|  %>
+            <li><%= instruction %></li>
+          <% end %>
         </ol>
-        <% end %>
-        <% rescue JSON::ParserError %>
-        <%= @exercise_plan.exercise.description %>
-      <% end %>
+      <% rescue JSON::ParserError %>
+      <%= @exercise_plan.exercise.description %>
     <% end %>
-    </p>
-  </div>
+  <% end %>
 </div>
