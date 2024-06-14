@@ -1,1 +1,35 @@
-<h1>Cardio</h1>
+<div class="container" data-controller="workout" data-workout-alarm-value="<%= asset_path("alarm.mp3")%>">
+
+  <!-- Exercise -->
+  <div data-workout-target="exercise">
+    <div class="row">
+      <%= link_to raw('<i class="fa-solid fa-arrow-left-long col-1"></i>'), plan_path(@exercise_plan.plan) %>
+      <h1 class="mt-3 text-center col-0"><%= @exercise_plan.exercise.title %></h1>
+    </div>
+    <p class="border border-dark circle-large my-3 mx-auto" data-workout-target="time">00:00</p>
+    <div class="d-flex justify-content-between my-4 mx-1">
+      <button type="button" class="btn btn-primary col-5">Start timer</button>
+      <button type="button" class="btn btn-primary col-5">Complete exercise</button>
+    </div>
+  </div>
+
+  <p class="my-2">Video Guide:</p>
+  <div class="video-container mb-3 rounded">
+    <iframe class="video" src="https://www.youtube.com/embed/<%=@exercise_plan.exercise.video%>?si=V0zo0dR5x2hAXNTJ&amp;controls=0"
+    title="YouTube video player" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+    </iframe>
+  </div>
+  <p class="mb-2 mt-3">Instructions:</p>
+  <% unless @exercise_plan.exercise.description.nil? %>
+    <% begin %>
+      <% exercise_instructions = JSON.parse(@exercise_plan.exercise.description) %>
+        <ol>
+          <% exercise_instructions.each do |instruction|  %>
+            <li><%= instruction %></li>
+          <% end %>
+        </ol>
+      <% rescue JSON::ParserError %>
+      <%= @exercise_plan.exercise.description %>
+    <% end %>
+  <% end %>
+</div>
