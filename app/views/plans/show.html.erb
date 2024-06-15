@@ -6,14 +6,11 @@
           <h2 class="accordion-header accordion-card pb-1">
             <%# use the ai-generate image service %>
             <%# url =  WorkoutPlanService::set_image (exercise_plans_by_day.first.description) %>
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= index %>" aria-expanded="true" aria-controls="collapse<%= index %>">
-              <div class= "text-white mx-5">
-              <h2><strong>Day <%= suggested_day %> </strong></h2>
-              <p> <strong><%= exercise_plans_by_day.first.description %> </strong></p>
-              </div>
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= index %>" aria-expanded="true" aria-controls="collapse<%= index %>" data-action="click->autofocus#fire">
+             <%= render "plans/day_condition", exercise_plans_by_day: exercise_plans_by_day, suggested_day: suggested_day%>
             </button>
           </h2>
-          <div id="collapse<%= index %>" class="accordion-collapse collapse<%= index + 1 == @plan.current_day ? ' show' : '' %>" aria-labelledby="heading<%= index %>" data-bs-parent="#accordionExample" data-controller="autofocus"  tabindex="0">
+          <div id="collapse<%= index %>" class="accordion-collapse collapse<%= index + 1 == @plan.current_day ? ' show' : '' %>" aria-labelledby="heading<%= index %>" data-bs-parent="#accordionExample"  data-controller="autofocus"  tabindex="0" >
             <% exercise_plans_by_day.each_with_index do |exercise_plan, exercise_plan_index| %>
               <%= render "plans/exercise_condition", exercise_plan: exercise_plan, exercise_plan_index: exercise_plan_index %>
             <% end %>
