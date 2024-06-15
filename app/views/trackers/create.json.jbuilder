@@ -21,6 +21,7 @@ if @tracker.persisted?
   # continue to next set
   else
     # json.inserted_item_exercise render(partial: "exercise_plans/exercise", formats: :html, locals: { exercise_plan: @exercise_plan })
+    json.add_class "card p-3 lh-base"
     json.status "continueExercise"
   end
 # tracker form error

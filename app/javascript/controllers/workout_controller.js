@@ -25,6 +25,7 @@ export default class extends Controller {
     this.formTarget.outerHTML = data.tracker_form
     // this.exerciseTarget.innerHTML = data.inserted_item_exercise
     this.trackerTarget.insertAdjacentHTML("beforeend", data.inserted_item_tracker)
+    this.trackerTarget.className = "card p-3 lh-base"
 
     this.countdownComplete()
   }
