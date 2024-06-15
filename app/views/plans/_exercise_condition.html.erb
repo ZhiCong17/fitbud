@@ -1,0 +1,12 @@
+<% if exercise_plan.exercise.description != "Rest day" %>
+  <% if !@exercise_rendered && exercise_plan.status.nil? && exercise_plan.suggested_day == @plan.current_day %>
+    <%= render "plans/active_exercise", exercise_plan: exercise_plan %>
+    <% @exercise_rendered = true %>
+  <% elsif exercise_plan.status == "Complete"  %>
+    <%= render "plans/complete_exercise", exercise_plan: exercise_plan %>
+  <% elsif @plan.current_day == @plan.rest_day %>
+    <% @plan.update!(current_day: @plan.current_day + 1 ) %>
+  <% else %>
+    <%= render "plans/lock_exercise", exercise_plan: exercise_plan %>
+  <% end %>
+<% end %>

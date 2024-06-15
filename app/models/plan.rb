@@ -15,8 +15,7 @@ class Plan < ApplicationRecord
   end
 
   def rest_day
-    rest = self.exercise_plans.find_by(status: "rest")
-    rest_day = rest.suggested_day
+    rest = ExercisePlan.find_by(status: "rest")
   end
 
   def create_plan(user)
