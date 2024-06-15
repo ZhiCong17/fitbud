@@ -8,10 +8,12 @@ class Plan < ApplicationRecord
   end
 
   def progress_status
-    rest_exercise_plans = self.exercise_plans.where(status: "rest").count
-    total_exercise_plans = ((self.exercise_plans.count) - rest_exercise_plans).to_f
-    completed_exercise_plans = (self.exercise_plans.where(status: "Complete").count).to_f
-    progress = ((completed_exercise_plans / total_exercise_plans).to_f) * 100
+
+    rest_exercise_plans = self.exercise_plans.where(description: "Rest Day").count
+    total_group_exercise_plans = (((self.exercise_plans.group_by(&:suggested_day)).count) - rest_exercise_plans).to_f
+    complete_exercise_plans = self.exercise_plans.where(status: "Complete")
+    group_complete_exercise_plans = (complete_exercise_plans.group_by(&:suggested_day).count).to_f
+    progress = ((group_complete_exercise_plans / total_group_exercise_plans).to_f) * 100
   end
 
   def rest_day
