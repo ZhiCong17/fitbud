@@ -27,13 +27,7 @@ class Plan < ApplicationRecord
   def self.check_and_handle_existing_plan(user)
     active_plan = Plan.where(user: user).where("progress < ?", 100).last
     if active_plan
-      plan = Plan.new
-      workout_plan = plan.create_plan(user)
-      new_plan = WorkoutPlanService.create_plan(user.id, workout_plan)
-      if new_plan
-        return { status: :created, plan: new_plan }
-      end
-      # return { status: :existing, plan: active_plan }
+      return { status: :existing, plan: active_plan }
     else
       plan = Plan.new
       workout_plan = plan.create_plan(user)
