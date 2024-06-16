@@ -39,7 +39,7 @@
       <% statuses = exercise_plan.map { |plan| plan.status } %>
       <% if  order <= 3 %>
         <%# current_user.current_plan.update!(current_day: days) if order ==1 %>
-        <% if statuses.include?(nil) %>
+        <% if statuses.include?(nil) || statuses.include?("rest") %>
           <%# edit here %>
           <%# url = find_url(current_user.current_plan.exercise_plans.first.description) %>
           <% image_url = ExerciseImage::find_url(exercise_plan.first['description']) %>

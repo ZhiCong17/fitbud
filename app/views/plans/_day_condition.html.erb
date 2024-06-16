@@ -1,0 +1,16 @@
+  <% if suggested_day < @plan.current_day %>
+      <div class= "text-white mx-5">
+      <h2><strong>✅Day <%= suggested_day %> </strong></h2>
+      <p> <strong><%= exercise_plans_by_day.first.description %> </strong></p>
+      </div>
+  <% elsif suggested_day == @plan.current_day %>
+      <div class= "text-white mx-5">
+      <h2><strong>💪Day <%= suggested_day %> </strong></h2>
+      <p> <strong><%= exercise_plans_by_day.first.description %> </strong></p>
+      </div>
+  <% else%>
+      <div class= " mx-5 locked">
+      <h2><strong>🔐Day <%= suggested_day %> </strong></h2>
+      <p> <strong><%= exercise_plans_by_day.first.description %> </strong></p>
+      </div>
+  <% end %>

@@ -9,10 +9,12 @@ class PlansController < ApplicationController
 
   def create
     user = current_user
-    plan = Plan.new()
-    workout_plan = plan.create_plan(user)
-    if plan = WorkoutPlanService.create_plan(user.id, workout_plan)
-      redirect_to plan_path(plan), alert: "New Workout plan created"
+    result = Plan.check_and_handle_existing_plan(user)
+    case result[:status]
+    when :existing
+      redirect_to plan_path(result[:plan]), alert: "Existing Plan still not completed"
+    when :created
+      redirect_to plan_path(result[:plan]), notice: "New Workout Plan created"
     end
   end
 
