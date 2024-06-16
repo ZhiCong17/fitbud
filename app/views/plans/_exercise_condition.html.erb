@@ -5,6 +5,7 @@
   <% elsif exercise_plan.status == "Complete"  %>
     <%= render "plans/complete_exercise", exercise_plan: exercise_plan %>
   <% elsif @plan.current_day == @plan.rest_day && @plan.current_day < 7%>
+     <% sleep 5 %> <!-- 5-second delay -->
     <% @plan.update!(current_day: @plan.current_day + 1 ) %>
   <% else %>
     <%= render "plans/lock_exercise", exercise_plan: exercise_plan %>
