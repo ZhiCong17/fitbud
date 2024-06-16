@@ -2,17 +2,13 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static target = ["collapseElement"]
+  // static target = ["collapseElement"]
 
   connect() {
-    this.element.focus();
+    // this.element.focus();
+    setTimeout(() => {
+      this.element.focus();
+    }, 100);
 
   }
-
-  fire(){
-    this.element.focus();
-    console.log("hi")
-  }
-
-      // Remove focus from other elements
 }
