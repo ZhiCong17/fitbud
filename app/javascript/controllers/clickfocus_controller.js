@@ -10,6 +10,6 @@ export default class extends Controller {
     setTimeout(() => {
       collapseElement.focus();
       collapseElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 100);
+    }, 250);
   }
 }
