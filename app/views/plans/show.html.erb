@@ -5,8 +5,8 @@
         <div class="collape " >
           <h2 class="accordion-header accordion-card pb-1">
             <%# use the ai-generate image service %>
-            <% url =  WorkoutPlanService::set_image (exercise_plans_by_day.first.description) %>
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= index %>" aria-expanded="true" aria-controls="collapse<%= index %>" style="background-image: url('<%= url %>')" data-action="click->clickfocus#focus" data-controller="clickfocus">
+            <%# url =  WorkoutPlanService::set_image (exercise_plans_by_day.first.description) %>
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= index %>" aria-expanded="true" aria-controls="collapse<%= index %>" data-action="click->clickfocus#focus" data-controller="clickfocus">
              <%= render "plans/day_condition", exercise_plans_by_day: exercise_plans_by_day, suggested_day: suggested_day%>
             </button>
           </h2>

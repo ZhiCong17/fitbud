@@ -39,42 +39,44 @@
       <% statuses = exercise_plan.map { |plan| plan.status } %>
       <% if  order <= 3 %>
         <%# current_user.current_plan.update!(current_day: days) if order ==1 %>
-        <% if statuses.include?(nil) || statuses.include?("rest") %>
-          <%# edit here %>
-          <%# url = find_url(current_user.current_plan.exercise_plans.first.description) %>
-          <% image_url = ExerciseImage::find_url(exercise_plan.first['description']) %>
-            <% if current_user.current_plan.current_day == days %>
-              <%= link_to(plan_exercise_plan_path(current_user.current_plan, current_user.current_plan.exercise_plans.exercise_status),
-              class: "text-decoration-none") do %>
-                <div class="card p-2 mb-2" style="background-image: url(<%= image_url %>);
-                                            background-size: cover;
-                                            background-position: center;
-                                            display: block;
-                                            height: 160px;
-                                            rounded;
-                                            color: white">
+        <% if current_user.current_plan.current_day <= exercise_plan.first.suggested_day %>
+          <% if statuses.include?(nil) || statuses.include?("rest") %>
+            <%# edit here %>
+            <%# url = find_url(current_user.current_plan.exercise_plans.first.description) %>
+            <% image_url = ExerciseImage::find_url(exercise_plan.first['description']) %>
+              <% if current_user.current_plan.current_day == days %>
+                <%= link_to(plan_exercise_plan_path(current_user.current_plan, current_user.current_plan.exercise_plans.exercise_status),
+                class: "text-decoration-none") do %>
+                  <div class="card p-2 mb-2" style="background-image: url(<%= image_url %>);
+                                              background-size: cover;
+                                              background-position: center;
+                                              display: block;
+                                              height: 160px;
+                                              rounded;
+                                              color: white">
+                    <h6>
+                      💪 Day <%= days %>:
+                      <%= exercise_plan.first["description"]%>
+                    </h6>
+                  </div>
+                <% end %>
+                <% order += 1 %>
+              <% else %>
+                <div class="card p-2 mb-2 locked" style="background-image: url(<%= image_url %>);
+                                              background-size: cover;
+                                              background-position: center;
+                                              display: block;
+                                              height: 160px;
+                                              rounded;
+                                              color: white">
                   <h6>
-                    💪 Day <%= days %>:
+                    🔐  Day <%= days %>:
                     <%= exercise_plan.first["description"]%>
                   </h6>
                 </div>
+                <% order += 1 %>
               <% end %>
-              <% order += 1 %>
-            <% else %>
-              <div class="card p-2 mb-2 locked" style="background-image: url(<%= image_url %>);
-                                            background-size: cover;
-                                            background-position: center;
-                                            display: block;
-                                            height: 160px;
-                                            rounded;
-                                            color: white">
-                <h6>
-                  🔐  Day <%= days %>:
-                  <%= exercise_plan.first["description"]%>
-                </h6>
-              </div>
-              <% order += 1 %>
-            <% end %>
+          <% end %>
         <% end %>
       <% else %>
         <% break %>

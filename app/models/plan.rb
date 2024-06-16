@@ -9,7 +9,7 @@ class Plan < ApplicationRecord
 
   def progress_status
     complete_plans = 0
-    rest_exercise_plans = exercise_plans.where(description: "Rest Day").count
+    rest_exercise_plans = exercise_plans.where('LOWER(description) = ?', 'rest day').count
     total_exercise_plans_by_day = exercise_plans.group_by(&:suggested_day)
     total_group_exercise_plans = (total_exercise_plans_by_day.count - rest_exercise_plans).to_f
     total_exercise_plans_by_day.each_value do |exercise_plan|
