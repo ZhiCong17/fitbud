@@ -19,6 +19,20 @@ class Plan < ApplicationRecord
     rest = ExercisePlan.find_by(status: "rest")
   end
 
+  def self.check_and_handle_existing_plan(user)
+    active_plan = Plan.where("progress < ?", 100).last
+    if active_plan
+      return { status: :existing, plan: active_plan }
+    else
+      plan = Plan.new
+      workout_plan = plan.create_plan(user)
+      new_plan = WorkoutPlanService.create_plan(user.id, workout_plan)
+      if new_plan
+        return { status: :created, plan: new_plan }
+      end
+    end
+  end
+
   def create_plan(user)
     client = OpenAI::Client.new
     content = <<~PROMPT
