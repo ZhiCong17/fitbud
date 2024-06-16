@@ -81,7 +81,7 @@ export default class extends Controller {
           // then redirect
           setTimeout(() => {
             window.location.href = next_exercise
-          }, 2000);
+          }, 3000);
         }
         // if not then reset
         else {
