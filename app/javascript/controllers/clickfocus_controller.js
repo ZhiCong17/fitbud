@@ -9,6 +9,6 @@ export default class extends Controller {
     console.log(collapseId)
     setTimeout(() => {
       collapseElement.focus();
-    });
+    }, 100);
   }
 }
