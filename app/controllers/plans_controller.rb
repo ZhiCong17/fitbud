@@ -9,12 +9,21 @@ class PlansController < ApplicationController
 
   def create
     user = current_user
-    result = Plan.check_and_handle_existing_plan(user)
-    case result[:status]
-    when :existing
-      redirect_to plan_path(result[:plan]), alert: "Existing Plan still not completed"
-    when :created
-      redirect_to plan_path(result[:plan]), notice: "New Workout Plan created"
+
+    respond_to do |format|
+      format.js { render js: "showLoadingPage();" } # Show the loading page when the request starts
+      format.html do
+        result = Plan.check_and_handle_existing_plan(user)
+
+        case result[:status]
+        when :existing
+          redirect_to plan_path(result[:plan]), alert: "Existing Plan still not completed"
+        when :created
+          redirect_to plan_path(result[:plan]), notice: "New Workout Plan created"
+        else
+          redirect_to root_path, alert: "Error creating plan"
+        end
+      end
     end
   end
 

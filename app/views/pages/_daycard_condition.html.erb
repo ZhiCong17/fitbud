@@ -1,6 +1,6 @@
         <% if current_user.current_plan.current_day <= exercise_plan.first.suggested_day %>
+          <% if exercise_plan_index < 3 %>
           <% if statuses.include?(nil) || statuses.include?("rest") %>
-            <% if exercise_plan_index <= 3 %>
               <% image_url = ExerciseImage::find_url(exercise_plan.first['description']) %>
               <% if current_user.current_plan.current_day == days %>
                 <%= link_to(plan_exercise_plan_path(current_user.current_plan, current_user.current_plan.exercise_plans.exercise_status),
