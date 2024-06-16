@@ -13,9 +13,11 @@
 
   <body>
     <%= render "shared/header" %>
-    <div class='container overflow-y-scroll'>
-      <%= render "shared/flashes" %>
-      <%= yield %>
+    <div class='container overflow-y-scroll mb-5'>
+      <div class='mb-3'>
+        <%= render "shared/flashes" %>
+        <%= yield %>
+      </div>
     </div>
     <%= render "shared/navbar" %>
   </body>

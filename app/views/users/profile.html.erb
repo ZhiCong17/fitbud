@@ -2,7 +2,7 @@
   <%# <button type="button" class="btn btn-primary d-grid col-6 mx-auto mt-5">+ Add Workout Plan</button> %>
   <%# <%= link_to "+ Add Workout Plan", create_plan_path, class: "btn btn-primary d-grid col-6 mx-auto mt-5" %>
 
-  <%= link_to "+ Add Workout Plan", create_plan_path, data:{ turbo_method: :post}, class: "btn btn-primary d-grid col-6 mx-auto mt-5" %>
+  <%= link_to "Add Workout Plan", create_plan_path, data:{ turbo_method: :post}, class: "btn btn-primary d-grid col-6 mx-auto mt-5" %>
 
   <div class="card text-center border border-black p-5 m-3">
     <h3>Personalise fitness and health</h3>
@@ -17,16 +17,18 @@
       <%= f.input :age, input_html: { min: '0', max: '99'}, wrapper_html: { class: "d-flex" }, label_html: {class:"col-4"}, input_html: {class:"g-col-8"} %>
       <%= f.input :gender, :collection => User::GENDER, wrapper_html: { class: "d-flex" }, label_html: {class:"col-4"}, input_html: {class:"g-col-8"} %>
       <%= f.input :fitness_goal, :collection => User::FITNESS_GOAL, wrapper_html: { class: "d-flex" }, label_html: {class:"col-4"}, input_html: {class:"g-col-8"} %>
-      <%= f.input :height, wrapper_html: { class: "d-flex" }, label_html: {class:"col-4"}, input_html: {class:"g-col-8"} %>
-      <%= f.input :weight, wrapper_html: { class: "d-flex" }, label_html: {class:"col-4"}, input_html: {class:"g-col-8"} %>
+      <%= f.input :height, label: 'Height (cm)',wrapper_html: { class: "d-flex" }, label_html: {class:"col-4"}, input_html: {class:"g-col-8"} %>
+      <%= f.input :weight, label: 'Weight (kg)', wrapper_html: { class: "d-flex" }, label_html: {class:"col-4"}, input_html: {class:"g-col-8"} %>
         <div class="mb-5">
           <%# Perform BMI calculation %>
           <% if current_user.height.nil? || current_user.weight.nil? %>
             <h2>Please update your profile</h2>
             <%= f.submit"Update profile", class: "btn btn-primary col-12 mt-3" %>
           <% else %>
-            <p style="font-size: 24px;"><strong> Your BMI: <%= current_user.bmi.round(2) %> </strong></p>
-            <p>18.8 &lt; Healthy Range &lt; 24.9 </p>
+            <div class='text-center my-4'>
+              <p class='mb-0', style="font-size: 24px;"><strong> Your BMI: <%= current_user.bmi.round(2) %> </strong></p>
+              <p>18.8 &lt; Healthy Range &lt; 24.9 </p>
+            </div>
       <%= f.submit"Update profile", class: "btn btn-primary col-12 " %>
       <% end %>
     <% end %>

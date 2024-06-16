@@ -44,7 +44,7 @@
           <%# url = find_url(current_user.current_plan.exercise_plans.first.description) %>
           <% image_url = ExerciseImage::find_url(exercise_plan.first['description']) %>
             <% if current_user.current_plan.current_day == days %>
-              <%= link_to(plan_exercise_plan_path(current_user.current_plan, current_user.current_plan.exercise_plans.first),
+              <%= link_to(plan_exercise_plan_path(current_user.current_plan, current_user.current_plan.exercise_plans.exercise_status),
               class: "text-decoration-none") do %>
                 <div class="card p-2 mb-2" style="background-image: url(<%= image_url %>);
                                             background-size: cover;
