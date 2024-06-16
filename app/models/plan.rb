@@ -20,7 +20,7 @@ class Plan < ApplicationRecord
   end
 
   def self.check_and_handle_existing_plan(user)
-    active_plan = Plan.where("progress < ?", 100).last
+    active_plan = Plan.where(user: user).where("progress < ?", 100).last
     if active_plan
       return { status: :existing, plan: active_plan }
     else
