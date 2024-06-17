@@ -1,0 +1,5 @@
+<%= link_to plan_exercise_plan_path(exercise_plan.plan, exercise_plan), class: "text-decoration-none text-black" do %>
+  <div class="accordion-body border-black" >
+    <strong>💪 Exercise <%= exercise_plan.order %>: <%= exercise_plan.exercise.title %></strong>
+  </div>
+<% end %>

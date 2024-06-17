@@ -8,15 +8,29 @@ class Plan < ApplicationRecord
   end
 
   def progress_status
-    rest_exercise_plans = self.exercise_plans.where(status: "rest").count
-    total_exercise_plans = ((self.exercise_plans.count) - rest_exercise_plans).to_f
-    completed_exercise_plans = (self.exercise_plans.where(status: "Complete").count).to_f
-    progress = ((completed_exercise_plans / total_exercise_plans).to_f) * 100
+    rest_exercise_plans = exercise_plans.where(description: "Rest Day").count
+    total_group_exercise_plans = (((exercise_plans.group_by(&:suggested_day)).count) - rest_exercise_plans).to_f
+    complete_exercise_plans = exercise_plans.where(status: "Complete")
+    group_complete_exercise_plans = (complete_exercise_plans.group_by(&:suggested_day).count).to_f
+    progress = ((group_complete_exercise_plans / total_group_exercise_plans).to_f) * 100
   end
 
   def rest_day
-    rest = self.exercise_plans.find_by(status: "rest")
-    rest_day = rest.suggested_day
+    rest = ExercisePlan.find_by(status: "rest")
+  end
+
+  def self.check_and_handle_existing_plan(user)
+    active_plan = Plan.where(user: user).where("progress < ?", 100).last
+    if active_plan
+      return { status: :existing, plan: active_plan }
+    else
+      plan = Plan.new
+      workout_plan = plan.create_plan(user)
+      new_plan = WorkoutPlanService.create_plan(user.id, workout_plan)
+      if new_plan
+        return { status: :created, plan: new_plan }
+      end
+    end
   end
 
   def create_plan(user)

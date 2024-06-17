@@ -1,7 +1,10 @@
 class User < ApplicationRecord
   has_many :plans
   GENDER = %w[Male Female].freeze
-  FITNESS_GOAL = %w[gain-muscle loss-weight].freeze
+  # FITNESS_GOAL = %w[gain-muscle loss-weight].freeze
+  FITNESS_GOAL = ["Gain muscle", "Gain strength", "Lose weight", "Gain endurance", "Recover from injury"].freeze
+  # Fitness goal: "Gain muscle", "Gain strength", "Lose weight", "Gain endurance", "Recover from injury"
+
   # AGE = %w[0..99].freeze
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
