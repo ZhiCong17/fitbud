@@ -10,7 +10,8 @@
     <% end %>
 
     <div class='card-message col-10 px-3'>
-      Hi <%= current_user.username.capitalize %>
+      <p><strong>Hi <%= current_user.username.capitalize %>,</strong></p>
+      <p><i><%= OpenAiService::message(current_user) %></i></p>
     </div>
   </div>
 
