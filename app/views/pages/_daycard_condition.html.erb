@@ -1,0 +1,37 @@
+        <% if current_user.current_plan.current_day <= exercise_plan.first.suggested_day %>
+          <% if exercise_plan_index < 3 %>
+          <% if statuses.include?(nil) || statuses.include?("rest") %>
+              <% image_url = ExerciseImage::find_url(exercise_plan.first['description']) %>
+              <% if current_user.current_plan.current_day == days %>
+                <%= link_to(plan_exercise_plan_path(current_user.current_plan, current_user.current_plan.exercise_plans.exercise_status),
+                class: "text-decoration-none") do %>
+                  <div class="card p-2 mb-2" style="background-image: url(<%= image_url %>);
+                                              background-size: cover;
+                                              background-position: center;
+                                              display: block;
+                                              height: 160px;
+                                              rounded;
+                                              color: white">
+                    <h6>
+                      💪 Day <%= days %>:
+                      <%= exercise_plan.first["description"]%>
+                    </h6>
+                  </div>
+                <% end %>
+              <% else %>
+                <div class="card p-2 mb-2 locked" style="background-image: url(<%= image_url %>);
+                                              background-size: cover;
+                                              background-position: center;
+                                              display: block;
+                                              height: 160px;
+                                              rounded;
+                                              color: white">
+                  <h6>
+                    🔐  Day <%= days %>:
+                    <%= exercise_plan.first["description"]%>
+                  </h6>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>

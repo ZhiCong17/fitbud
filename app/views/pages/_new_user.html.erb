@@ -21,9 +21,5 @@
     <span>
       Let's add a workout plan.
     </span>
-    <%= link_to 'Add Workout Plan',
-      create_plan_path,
-      data:{ turbo_method: :post},
-      class: "btn btn-primary my-3"
-    %>
+ <%= link_to "Add Workout Plan", create_plan_path, remote: true, data: { turbo_method: :post, disable_with: "Adding..." }, class: "btn btn-primary d-grid col-6 mx-auto mt-5", id: "add-workout-plan-link" %>
   </div>
