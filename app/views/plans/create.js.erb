@@ -1,0 +1,8 @@
+<!-- app/views/plans/create.js.erb -->
+<%= if flash[:alert]
+  "hideLoadingPage(); alert('#{j flash[:alert]}');"
+elsif flash[:notice]
+  "hideLoadingPage(); alert('#{j flash[:notice]}');"
+else
+  "hideLoadingPage();"
+end %>

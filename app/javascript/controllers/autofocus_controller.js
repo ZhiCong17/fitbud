@@ -7,8 +7,9 @@ export default class extends Controller {
     const index = parseInt(this.element.dataset.index);
     if (index + 1 === this.currentDayValue) {
       setTimeout(() => {
-              this.element.focus();
-            }, 100);
+        this.element.focus();
+        this.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
     }
   }
 }

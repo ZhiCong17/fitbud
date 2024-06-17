@@ -6,12 +6,23 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%#= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'loading', 'data-turbolinks-track': 'reload' %> <!-- Add this line -->
     <%= javascript_importmap_tags %>
   </head>
 
 
   <body>
+<div id="loading-page" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: white; z-index: 9999; text-align: center;">
+ <div id="icon-container" style="position: absolute; top: 45%; left: 39%; transform: translate(-50%, -50%); display: none; margin-bottom: 100px"></div>
+  <div class="spinner p-0" style="position: absolute; top: 45%; left: 39%; transform: translate(-50%, -50%); margin-bottom: 100px"></div>
+   <div id="loading-text" class="text" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); margin-top: 80px;">Generating your workout plan...</div>
+</div>
+
+
+
     <%= render "shared/header" %>
     <div class='container overflow-y-scroll mb-5'>
       <div class='mb-3'>

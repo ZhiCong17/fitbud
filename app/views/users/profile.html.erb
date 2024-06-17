@@ -2,7 +2,10 @@
   <%# <button type="button" class="btn btn-primary d-grid col-6 mx-auto mt-5">+ Add Workout Plan</button> %>
   <%# <%= link_to "+ Add Workout Plan", create_plan_path, class: "btn btn-primary d-grid col-6 mx-auto mt-5" %>
 
-  <%= link_to "Add Workout Plan", create_plan_path, data:{ turbo_method: :post}, class: "btn btn-primary d-grid col-6 mx-auto mt-5" %>
+  <%#= link_to "Add Workout Plan", create_plan_path, data:{ turbo_method: :post}, class: "btn btn-primary d-grid col-6 mx-auto mt-5" %>
+  <%#= link_to "Add Workout Plan", create_plan_path, remote: true, data: { turbo_method: :post, disable_with: "Adding..." }, class: "btn btn-primary d-grid col-6 mx-auto mt-5", onclick: "showLoadingPage()" %>
+<%= link_to "Add Workout Plan", create_plan_path, remote: true, data: { turbo_method: :post, disable_with: "Adding..." }, class: "btn btn-primary d-grid col-6 mx-auto mt-5", id: "add-workout-plan-link" %>
+
 
   <div class="card text-center border border-black p-5 m-3">
     <h3>Personalise fitness and health</h3>

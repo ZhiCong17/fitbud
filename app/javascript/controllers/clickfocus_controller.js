@@ -9,6 +9,7 @@ export default class extends Controller {
     console.log(collapseId)
     setTimeout(() => {
       collapseElement.focus();
-    }, 100);
+      collapseElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 250);
   }
 }
