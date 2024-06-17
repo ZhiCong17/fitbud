@@ -1,36 +1,3 @@
-
-// function showLoadingPage() {
-//   document.getElementById("loading-page").style.display = "block";
-// }
-
-// function hideLoadingPage() {
-//   document.getElementById("loading-page").style.display = "none";
-// }
-
-// document.addEventListener("turbolinks:load", () => {
-//   var iconContainer = document.getElementById("icon-container");
-
-//   var icon = new Image();
-//   icon.onload = function() {
-//     icon.classList.add("icons");
-//     iconContainer.appendChild(icon);
-//   };
-//   icon.src = "https://preview.redd.it/one-piece-icons-by-me-v0-qweam8vkaxv91.jpg?width=1000&format=pjpg&auto=webp&s=5423e6d70e3e39abe768e15caec9daf6d24801d0";
-// });
-// var icons = [
-//   "https://preview.redd.it/one-piece-icons-by-me-v0-qweam8vkaxv91.jpg?width=1000&format=pjpg&auto=webp&s=5423e6d70e3e39abe768e15caec9daf6d24801d0",
-//   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh6do6fB0OMsSAVnsOHzkJYhH4GELzKFBYYkX_epyKi-lGENGK9t0TFajNaTYly9gE5E0&usqp=CAU",
-//   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPZOHh7Y_1egiTp2yYmTLDUYOxgL75CyHxLxrfuofpNvqW6NRHOMntjSfyTuQ0xYWZdaQ&usqp=CAU"
-// ];
-
-//   var icon = new Image();
-//   icon.src = "https://cdn.icon-icons.com/icons2/2248/PNG/512/react_icon_136462.png";
-//   icon.onload = function() {
-//     iconContainer.appendChild(icon);
-//     icon.style.display = "block"; // Show the icon once loaded
-//   };
-// });
-
 function showLoadingPage() {
   // var loadingPage = document.getElementById("loading-page");
   // loadingPage.style.display = "block";
@@ -48,7 +15,7 @@ function showLoadingPage() {
     setInterval(() => {
       textIndex = (textIndex + 1) % texts.length;
       loadingText.textContent = texts[textIndex];
-    }, 3000); // Change text every 2 seconds
+    }, 3000); // Change text every 3 seconds
 
     // To show the loading page, remove the display: none style
     loadingPage.style.display = 'flex';
@@ -82,7 +49,7 @@ function showLoadingPage() {
 
     currentIndex = (currentIndex + 1) % icons.length; // Move to the next icon, loop back to the first icon if at the end
 
-    setTimeout(showNextIcon, 4000); // Show the next icon after 1 second
+    setTimeout(showNextIcon, 4000); // Show the next icon after 4 second
   }
 
   showNextIcon(); // Start the loop
