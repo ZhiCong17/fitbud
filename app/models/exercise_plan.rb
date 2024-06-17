@@ -32,10 +32,26 @@ class ExercisePlan < ApplicationRecord
   end
 
   def rest_in_mmss
-    if rest < 61
+    if rest < 60
       "00:#{rest.to_i}"
+    elsif rest % 60 < 10
+      "0#{(rest / 60).to_i}:0#{(rest % 60).to_i}"
     else
-      "0#{rest / 60}:#{rest % 60}"
+      "0#{(rest / 60).to_i}:#{(rest % 60).to_i}"
+    end
+  end
+
+  def duration_in_mmss
+    if duration < 60
+      "00:#{duration.to_i}"
+    elsif duration % 60 < 10 && duration > 599
+      "#{duration / 60}:0#{duration % 60}"
+    elsif duration % 60 < 10 && duration < 600
+      "0#{duration / 60}:0#{duration % 60}"
+    elsif duration > 599
+      "#{duration / 60}:#{duration % 60}"
+    else
+      "0#{duration / 60}:#{duration % 60}"
     end
   end
 end

@@ -7,7 +7,7 @@
       <h1 class="my-auto text-center col-0"><%= @exercise_plan.exercise.title %></h1>
       <p class="fa-solid fa-arrow-left-long col-1 m-0 opacity-0"></p>
     </div>
-    <p class="border border-dark circle-large mt-4 mb-2 mx-auto" data-workout-target="time">00:00</p>
+    <p class="border border-dark circle-large mt-4 mb-2 mx-auto" data-workout-target="time"><%= @exercise_plan.duration_in_mmss %></p>
     <p class="text-center mb-0">Timer</p>
     <div class="d-flex justify-content-between my-4 mx-1">
       <button type="button" class="btn btn-primary col-5 py-3">Start</button>
