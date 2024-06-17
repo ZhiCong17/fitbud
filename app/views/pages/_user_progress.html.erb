@@ -16,70 +16,22 @@
   </div>
 
   <div class='card col-10 py-3 my-3'>
-    <%#= link_to(plan_path(current_user.current_plan),{class: 'text-decoration-none'}) do  %>
-
     <%= link_to(plan_path(current_user.current_plan),{class: 'text-decoration-none'}) do  %>
       <span>Current Plan Progress</span>
       <div class="progress my-3" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
       <div class="progress-bar progress-bar-striped" style="width: <%=current_user.current_plan.progress_status%>%"><%= current_user.current_plan.progress_status.round(2) %>%</div>
       </div>
-      <%# <%= current_user.current_plan.progress %>
     <% end %>
   </div>
-
-  <%# plan = current_user.current_plan %>
-  <%# exercise_plans = ExercisePlan.where(plan: plan) %>
 
   <div class='card col-10 py-4'>
     <span class='mb-2 '>
       Display next 3 days exercise plan
     </span>
     <% exercise_plan_by_day = current_user.current_plan.exercise_plans.group_by(&:suggested_day) %>
-    <% order = 1 %>
-      <% exercise_plan_by_day.each do | days, exercise_plan | %>
+      <% exercise_plan_by_day.each_with_index do | (days, exercise_plan), exercise_plan_index | %>
       <% statuses = exercise_plan.map { |plan| plan.status } %>
-      <% if  order <= 3 %>
-        <%# current_user.current_plan.update!(current_day: days) if order ==1 %>
-        <% if statuses.include?(nil) || statuses.include?("rest") %>
-          <%# edit here %>
-          <%# url = find_url(current_user.current_plan.exercise_plans.first.description) %>
-          <% image_url = ExerciseImage::find_url(exercise_plan.first['description']) %>
-            <% if current_user.current_plan.current_day == days %>
-              <%= link_to(plan_exercise_plan_path(current_user.current_plan, current_user.current_plan.exercise_plans.exercise_status),
-              class: "text-decoration-none") do %>
-                <div class="card p-2 mb-2" style="background-image: url(<%= image_url %>);
-                                            background-size: cover;
-                                            background-position: center;
-                                            display: block;
-                                            height: 160px;
-                                            rounded;
-                                            color: white">
-                  <h6>
-                    💪 Day <%= days %>:
-                    <%= exercise_plan.first["description"]%>
-                  </h6>
-                </div>
-              <% end %>
-              <% order += 1 %>
-            <% else %>
-              <div class="card p-2 mb-2 locked" style="background-image: url(<%= image_url %>);
-                                            background-size: cover;
-                                            background-position: center;
-                                            display: block;
-                                            height: 160px;
-                                            rounded;
-                                            color: white">
-                <h6>
-                  🔐  Day <%= days %>:
-                  <%= exercise_plan.first["description"]%>
-                </h6>
-              </div>
-              <% order += 1 %>
-            <% end %>
-        <% end %>
-      <% else %>
-        <% break %>
-      <% end %>
+      <%= render "pages/daycard_condition", days:days, exercise_plan: exercise_plan, statuses: statuses, current_user: current_user, exercise_plan_index: exercise_plan_index%>
       <% end %>
   </div>
 </div>
