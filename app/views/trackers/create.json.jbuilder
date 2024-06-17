@@ -8,9 +8,9 @@ if @tracker.persisted?
     @exercise_plan.complete!
     # json.inserted_item_exercise render(partial: "exercise_plans/exercise", formats: :html, locals: { exercise_plan: @exercise_plan })
 
-    # jump to next exercis
+    # jump to next exercise
     if @exercise_plan.next_exercise_plan.present?
-      json.next_exercise "http://localhost:3000/plans/#{@exercise_plan.plan.id}/exercise_plans/#{@exercise_plan.next_exercise_plan.id}"
+      json.next_exercise plan_exercise_plan_path(@exercise_plan.plan, @exercise_plan.next_exercise_plan)
       json.status "nextExercise"
     # last exercise for the day
     else
