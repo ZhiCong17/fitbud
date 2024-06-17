@@ -32,7 +32,9 @@ class ExercisePlan < ApplicationRecord
   end
 
   def rest_in_mmss
-    if rest < 60
+    if rest < 10
+      "00:0#{rest.to_i}"
+    elsif rest < 60
       "00:#{rest.to_i}"
     elsif rest % 60 < 10
       "0#{(rest / 60).to_i}:0#{(rest % 60).to_i}"
@@ -53,5 +55,9 @@ class ExercisePlan < ApplicationRecord
     else
       "0#{duration / 60}:#{duration % 60}"
     end
+  end
+
+  def current_exercise_plan?
+    self == ExercisePlan.where(status: nil).first
   end
 end
