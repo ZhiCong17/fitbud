@@ -1,6 +1,6 @@
 <div class='row justify-content-center'>
 
-  <div class="card-user col-10 mt-5">
+  <div class="card-user col-10 mt-3">
     <% if current_user.gender.nil? %>
       <img src="https://www.shutterstock.com/image-vector/user-profile-icon-vector-avatar-600nw-2247726673.jpg" />
     <% elsif current_user.gender == "Female" %>
@@ -10,7 +10,8 @@
     <% end %>
 
     <div class='card-message col-10 px-3'>
-      Hi <%= current_user.username.capitalize %>
+        <p class="greeting"><strong>Hi <%= current_user.username.capitalize %>,</strong></p>
+        <p><i><%= OpenAiService::message(current_user) %></i></p>
     </div>
   </div>
 
