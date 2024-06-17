@@ -21,7 +21,13 @@ background-color: #d9dfda;
 }
 
 .card-message {
-  word-wrap: break-word; /* Ensures long words will break */
-  white-space: normal;   /* Ensures text will wrap inside the container */
-  overflow-wrap: break-word; /* A modern alternative for word wrapping */
+  word-wrap: break-word;
+  white-space: normal;
+  overflow-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+}
+
+.greeting {
+  margin-bottom: 0.5rem;
 }
