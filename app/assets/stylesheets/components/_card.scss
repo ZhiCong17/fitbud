@@ -20,6 +20,18 @@ border-radius: 16px;
 background-color: #d9dfda;
 }
 
+.card-message {
+  word-wrap: break-word;
+  white-space: normal;
+  overflow-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+}
+
+.greeting {
+  margin-bottom: 0.5rem;
+}
+
 /* CSS for the spinner animation */
 @keyframes spin {
   0% { transform: rotate(0deg); }

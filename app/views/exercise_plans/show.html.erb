@@ -7,29 +7,18 @@
   <p class="mb-2">Enter your set details: </p>
   <%= render "exercise_plans/form", exercise_plan: @exercise_plan, tracker: @tracker %>
 
+
   <div data-workout-target="tracker">
-    <% @exercise_plan.trackers.each_with_index do |tracker, index| %>
-      <%= render "exercise_plans/tracker", tracker: tracker, index: index %>
+
+    <% if @exercise_plan.trackers.count.positive? %>
+      <div class="card p-3 lh-base">
+        <% @exercise_plan.trackers.each_with_index do |tracker, index| %>
+          <%= render "exercise_plans/tracker", tracker: tracker, index: index %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 
-  <p class="my-2">Video Guide:</p>
-  <div class="video-container mb-3 rounded">
-    <iframe class="video" src="https://www.youtube.com/embed/<%=@exercise_plan.exercise.video%>?si=V0zo0dR5x2hAXNTJ&amp;controls=1"
-    title="YouTube video player" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-    </iframe>
-  </div>
-  <p class="mb-2 mt-3">Instructions:</p>
-  <% unless @exercise_plan.exercise.description.nil? %>
-    <% begin %>
-      <% exercise_instructions = JSON.parse(@exercise_plan.exercise.description) %>
-        <ol>
-          <% exercise_instructions.each do |instruction|  %>
-            <li><%= instruction %></li>
-          <% end %>
-        </ol>
-      <% rescue JSON::ParserError %>
-      <%= @exercise_plan.exercise.description %>
-    <% end %>
-  <% end %>
+
+  <%= render "exercise_plans/exercise_helper", exercise_plan: @exercise_plan %>
 </div>
