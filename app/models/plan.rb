@@ -41,7 +41,7 @@ class Plan < ApplicationRecord
   def create_plan(user)
     client = OpenAI::Client.new
     content = <<~PROMPT
-      "Give me a 7 days gym workout plan for a beginner.
+      "Give me a 4 days gym workout plan for a beginner.
       The plan should be for a #{user.age} year #{user.gender}, #{user.weight}kg, #{user.height}cm, looking to #{user.fitness_goal}.
       Breakdown the plan in terms of days just present by integer like 1,2,3...(dont want show as day format).
       Each day could consist of own description (must not include day) and at least 5 exercises, each exercise can be broken down into one instance which include name, must have instructions (must be array), sets, reps or duration (in seconds), weight show float.
