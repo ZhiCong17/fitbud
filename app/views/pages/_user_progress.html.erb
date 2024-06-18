@@ -9,9 +9,9 @@
       <img src="https://i.pinimg.com/564x/0e/9b/ce/0e9bceffda12d948ebe741b5b25dcc16.jpg"/>
     <% end %>
 
-    <div class='card-message col-10 px-3'>
+    <div class='card-message col-9 px-3'>
         <p class="greeting"><strong>Hi <%= current_user.username.capitalize %>,</strong></p>
-        <p><i><%= OpenAiService::message(current_user) %></i></p>
+        <p class="mb-0"><i><%= OpenAiService::message(current_user) %></i></p>
     </div>
   </div>
 
