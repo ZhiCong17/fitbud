@@ -21,7 +21,7 @@ class OpenAiService
         about doing workout.
         for a gym beginner
         based on #{user.gender}
-        only 10 words.
+        maximum 10 words.
         without any of your own answer.
         Must responce in Json format"
       }]
