@@ -13,7 +13,6 @@ class WorkoutPlanService
       description = details.first[1]
       # description = details["description"]
       exercises = details["exercises"]
-
         if exercises.nil?
           exercise_plan = ExercisePlan.create!(
             plan: plan,

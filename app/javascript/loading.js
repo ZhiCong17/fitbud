@@ -25,18 +25,10 @@ function showLoadingPage() {
   iconContainer.style.display = "block";
 
   var icons = [
-    "https://preview.redd.it/one-piece-icons-by-me-v0-qweam8vkaxv91.jpg?width=1000&format=pjpg&auto=webp&s=5423e6d70e3e39abe768e15caec9daf6d24801d0",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh6do6fB0OMsSAVnsOHzkJYhH4GELzKFBYYkX_epyKi-lGENGK9t0TFajNaTYly9gE5E0&usqp=CAU",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPZOHh7Y_1egiTp2yYmTLDUYOxgL75CyHxLxrfuofpNvqW6NRHOMntjSfyTuQ0xYWZdaQ&usqp=CAU",
-    "https://preview.redd.it/one-piece-icons-by-me-v0-7f9c4f2laxv91.jpg?width=1000&format=pjpg&auto=webp&s=cc7d0cb91f414e92cfc06be3998123c11a216033",
-    "https://preview.redd.it/one-piece-icons-by-me-v0-tl852d7laxv91.jpg?width=1000&format=pjpg&auto=webp&s=790b8863e9c30967383ad633eca4df68f2ac16c0",
-    "https://preview.redd.it/one-piece-icons-by-me-v0-haf5bvblaxv91.jpg?width=1000&format=pjpg&auto=webp&s=647e4d53195d992daccf1cb8946587dbfac83995",
-    "https://preview.redd.it/one-piece-icons-by-me-v0-k6bm2relaxv91.jpg?width=1000&format=pjpg&auto=webp&s=606855cec7aaad24944db642d61e38dfff52f73b",
-    "https://preview.redd.it/one-piece-icons-by-me-v0-ojqbkahlaxv91.jpg?width=1000&format=pjpg&auto=webp&s=1e64fc83e541276fa0dc8cd2811c4a55c06b6975",
-    "https://preview.redd.it/one-piece-icons-by-me-v0-y8kch0klaxv91.jpg?width=1000&format=pjpg&auto=webp&s=1edb3bf72374c2a4da00c15e6052d41690078a15",
-    "https://preview.redd.it/one-piece-icons-by-me-v0-di03oomlaxv91.jpg?width=1000&format=pjpg&auto=webp&s=ceab5433c24ee52e3bca9c9a9ef804f2f9c5f27c",
-    "https://preview.redd.it/one-piece-icons-by-me-v0-15v3ydplaxv91.jpg?width=1000&format=pjpg&auto=webp&s=da09cc7638f57cd2e0e3cb5ffa45519945aa4e13",
-    "https://preview.redd.it/one-piece-icons-by-me-v0-v6tqxrwlaxv91.jpg?width=1000&format=pjpg&auto=webp&s=347aaae059b7e44c99e18c93005e827073b424da"
+    "https://cdn-icons-gif.flaticon.com/8756/8756295.gif",
+    "https://cdn-icons-gif.flaticon.com/10968/10968107.gif",
+    "https://cdn-icons-gif.flaticon.com/8756/8756192.gif",
+    "https://cdn-icons-gif.flaticon.com/10968/10968103.gif"
   ];
   var currentIndex = 0;
 
