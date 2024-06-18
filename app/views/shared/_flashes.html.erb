@@ -1,12 +1,38 @@
 <% if notice %>
-  <div class="alert alert-success alert-dismissible fade show m-1" role="alert">
+  <div id="noticeAlert" class="alert alert-success alert-dismissible fade show m-1" role="alert">
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     <%= notice %>
   </div>
+  <script>
+    // Function to hide and remove the notice alert
+    function hideNoticeAlert() {
+      var alertElement = document.getElementById('noticeAlert');
+      alertElement.classList.add('alert-hide');
+      // Remove the alert from the DOM after the transition ends
+      setTimeout(function() {
+        alertElement.remove();
+      }, 500); // Match the transition duration in CSS
+    }
+    // Automatically close the notice alert after 5 seconds
+    setTimeout(hideNoticeAlert, 2000); // 3 seconds
+  </script>
 <% end %>
 <% if alert %>
-  <div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
+  <div id="alertAlert" class="alert alert-warning alert-dismissible fade show m-1" role="alert">
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     <%= alert %>
   </div>
+  <script>
+    // Function to hide and remove the alert alert
+    function hideAlertAlert() {
+      var alertElement = document.getElementById('alertAlert');
+      alertElement.classList.add('alert-hide');
+      // Remove the alert from the DOM after the transition ends
+      setTimeout(function() {
+        alertElement.remove();
+      }, 500); // Match the transition duration in CSS
+    }
+    // Automatically close the alert alert after 5 seconds
+    setTimeout(hideAlertAlert, 2000); // 3 seconds
+  </script>
 <% end %>
