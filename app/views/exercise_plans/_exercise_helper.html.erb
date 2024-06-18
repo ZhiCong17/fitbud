@@ -1,0 +1,21 @@
+<p class="my-2">Video Guide:</p>
+<div class="video-container mb-3 rounded">
+  <iframe class="video" src="https://www.youtube.com/embed/<%=exercise_plan.exercise.video%>?si=V0zo0dR5x2hAXNTJ&amp;controls=1"
+  title="YouTube video player" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+  </iframe>
+</div>
+<div class="card p-3">
+  <% unless exercise_plan.exercise.description.nil? %>
+    <% begin %>
+      <p class="mb-1">Instructions:</p>
+      <% exercise_instructions = JSON.parse(exercise_plan.exercise.description) %>
+        <ol class="mb-0">
+          <% exercise_instructions.each do |instruction|  %>
+            <li><%= instruction %></li>
+          <% end %>
+        </ol>
+      <% rescue JSON::ParserError %>
+      <%= exercise_plan.exercise.description %>
+    <% end %>
+  <% end %>
+</div>

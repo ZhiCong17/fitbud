@@ -5,13 +5,13 @@ import { Timer } from "easytimer.js";
 export default class extends Controller {
   static targets = ["exercise", "tracker", "form", "trackerCount", "time", "set"]
   static values = {
-    alarm: String
+    alarm: String,
   }
 
   connect() {
     this.timer = new Timer({startValues: {seconds: 3}});
 
-    this.timeTarget.innerText = this.timer.getTimeValues().toString().substring(3);
+    // this.timeTarget.innerText = this.timer.getTimeValues().toString().substring(3);
 
     this.alarm = new Audio(this.alarmValue);
   }
@@ -25,6 +25,7 @@ export default class extends Controller {
     this.formTarget.outerHTML = data.tracker_form
     // this.exerciseTarget.innerHTML = data.inserted_item_exercise
     this.trackerTarget.insertAdjacentHTML("beforeend", data.inserted_item_tracker)
+    this.trackerTarget.className = "card p-3 lh-base"
 
     this.countdownComplete()
   }
@@ -55,7 +56,7 @@ export default class extends Controller {
   }
 
   startTimer() {
-    this.timer.start({countdown: true, startValues: {seconds: 3}});
+    this.timer.start({countdown: true, startValues: {minutes: this.timeTarget.innerText.substring(0,2), seconds: this.timeTarget.innerText.substring(3)}});
 
     this.timer.addEventListener('secondsUpdated', function (e) {
       console.log(e.detail.timer.getTimeValues().toString());
@@ -80,7 +81,7 @@ export default class extends Controller {
           // then redirect
           setTimeout(() => {
             window.location.href = next_exercise
-          }, 2000);
+          }, 3000);
         }
         // if not then reset
         else {
