@@ -57,7 +57,7 @@ class ExercisePlan < ApplicationRecord
     end
   end
 
-  def current_exercise_plan?
-    self == ExercisePlan.where(status: nil).first
+  def current_exercise_plan?(plan)
+    self == ExercisePlan.find_by(plan: plan, status: nil)
   end
 end

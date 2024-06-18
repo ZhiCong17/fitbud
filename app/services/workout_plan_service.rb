@@ -13,7 +13,6 @@ class WorkoutPlanService
       description = details.first[1]
       # description = details["description"]
       exercises = details["exercises"]
-
         if exercises.nil?
           exercise_plan = ExercisePlan.create!(
             plan: plan,
@@ -42,7 +41,7 @@ class WorkoutPlanService
               repetitions: exercise_details["reps"],
               suggested_day: days,
               weight: exercise_details["weight"] || 0.0, # If no weight provided, set to 0.0
-              rest: exercise_details["rest"] || "", # If no rest provided, set to an empty string
+              rest: exercise_details["rest_time"] || 0, # If no rest provided, set to an empty string
               duration: exercise_details["duration"] || 0, # If no duration provided, set to 0
               exercise: exercise,
               plan: plan
@@ -58,7 +57,7 @@ class WorkoutPlanService
               repetitions: exercise_details["reps"],
               suggested_day: days,
               weight: exercise_details["weight"] || 0.0, # If no weight provided, set to 0.0
-              rest: exercise_details["rest"] || "", # If no rest provided, set to an empty string
+              rest: exercise_details["rest_time"] || 0, # If no rest provided, set to an empty string
               duration: exercise_details["duration"] || 0, # If no duration provided, set to 0
               exercise: current_exercise_storage,
               plan: plan

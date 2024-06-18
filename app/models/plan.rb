@@ -27,7 +27,7 @@ class Plan < ApplicationRecord
   def self.check_and_handle_existing_plan(user)
     active_plan = Plan.where(user: user).where("progress < ?", 100).last
     if active_plan
-      return { status: :existing, plan: active_plan }
+        return { status: :existing, plan: active_plan }
     else
       plan = Plan.new
       workout_plan = plan.create_plan(user)
@@ -41,13 +41,14 @@ class Plan < ApplicationRecord
   def create_plan(user)
     client = OpenAI::Client.new
     content = <<~PROMPT
-      "Give me a 1 week gym workout plan for a beginner.
+      "Give me a 7 days gym workout plan for a beginner.
       The plan should be for a #{user.age} year #{user.gender}, #{user.weight}kg, #{user.height}cm, looking to #{user.fitness_goal}.
       Breakdown the plan in terms of days just present by integer like 1,2,3...(dont want show as day format).
-      Each day could consist of own description (must not include day )and at least 5 exercises, each exercise can be broken down into one instance which are include name, must have instructions (must be array), sets, reps, weight show float, and/or duration show second. If the exercise requires, you can include a rest time.
+      Each day could consist of own description (must not include day) and at least 5 exercises, each exercise can be broken down into one instance which include name, must have instructions (must be array), sets, reps or duration (in seconds), weight show float.
+      If the exercise has sets must include a rest time, if not rest time the value must is 0. Key of rest time must as "rest_time".
       Without repeated day.
-      Please include at least one rest day, rest day must no at day 1.
-      For the Rest day must no has any exercises.
+      Please include at least one rest day, must at day 4.
+      For the Rest day must no has any exercises and the description must is "Rest day".
       Cardio is not consider is rest day.
       Format your output into a json response"
     PROMPT

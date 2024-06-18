@@ -1,7 +1,7 @@
 <%= simple_form_for [exercise_plan, tracker], html: { class: "d-flex align-items-center gap-2" }, data: {action: "submit->workout#updateSet", workout_target:"form"} do |f| %>
   <%= f.input :weight, label: false, input_html: { class:"text-center", placeholder: "KG", disabled: exercise_plan.complete_set?} %>
   <%= f.input :repetitions, label: false, input_html: { class: "text-center d-inline", placeholder: "Reps", disabled: exercise_plan.complete_set?} %>
-  <% if exercise_plan.current_exercise_plan? %>
+  <% if exercise_plan.current_exercise_plan?(exercise_plan.plan) %>
     <%= f.submit "+", class: "btn btn-primary mb-3", disabled: exercise_plan.complete_set? %>
   <% else %>
     <%= f.submit "+", class: "btn btn-primary mb-3 disabled", disabled: exercise_plan.complete_set? %>
